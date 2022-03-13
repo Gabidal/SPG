@@ -23,10 +23,10 @@ int main(int argc, char** argv)
     //Create the world
     World* world = new World();
 
-    for (int i = 0; i < 1000; i++) {
-        for (int j = 0; j < 1000; j++) {
+    for (int i = 0; i < 100; i++) {
+        for (int j = 0; j < 100; j++) {
             //create a test tile with Air.png
-            Tile* tile = new Tile(TILE_IMAGES::AIR, 1, 1, i, j);
+            Tile* tile = new Tile(TILE_IMAGES::GRASS, 1, 1, i, j);
 
             world->Tile_Buffer.push_back(tile);
         }

@@ -6,6 +6,7 @@
 
 namespace TILE_IMAGES{
     const string AIR = "Air.png";
+    const string GRASS = "Grass.png";
 }
 
 //The window consists of tiles.
