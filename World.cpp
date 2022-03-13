@@ -33,14 +33,14 @@ void World::Add_Tile(Tile* tile) {
 	//If the chunk is not null
 	if (chunk != nullptr) {
 		//Add the tile to the chunk
-		chunk->Tiles.push_back(tile);
+		chunk->Objects.push_back(tile);
 	}
 	else {
 		//Create a new chunk
 		Chunk* new_chunk = new Chunk();
 
 		//Add the tile to the chunk
-		new_chunk->Tiles.push_back(tile);
+		new_chunk->Objects.push_back(tile);
 
 		//Add the chunk to the world
 		Chunks[Get_Chunk_Key(tile->Position->X, tile->Position->Y)] = new_chunk;

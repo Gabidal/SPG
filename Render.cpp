@@ -1,9 +1,12 @@
 #include "Render.h"
 
+#include <algorithm>
+
 #include "SDL/SDL.h"
 #include "Tile.h"
 #include "World.h"
 #include "Vector.h"
+#include "Chunk.h"
 
 SDL_Renderer* RENDER::Renderer;
 SDL_Window* RENDER::Window;
@@ -24,18 +27,39 @@ void RENDER::Start_Window(int width, int height){
 }
 
 void RENDER::Render(World* world){
-    //Show the tiles in the window depending on the FOV and the render distance
-    for(int x = 0; x <= RENDER::FOV * 2; x++){
-        for(int y = 0; y <= RENDER::FOV * 2; y++){
-            //Get the tile at the current position
-            Tile* tile = world->Get_Tile(RENDER::Camera.X + x, RENDER::Camera.Y + y);
+    //Calculate the current center chunk
+    int Center_X = (int)Camera.X / CHUNK_SIZE * CHUNK_SIZE;
+    int Center_Y = (int)Camera.Y / CHUNK_SIZE * CHUNK_SIZE;
 
-            //If the tile is not null
-            if(tile != nullptr){
-                //Render the tile
-                tile->Render();
+    //Calculate how many chunksare there to render in next to the center Chunk
+    int Surrounding_Chunks_Count = RENDER::FOV / CHUNK_SIZE + 1;
+
+    //Gather all the objects in all the surrounding chunks
+    vector<Object*> All_Objects;
+
+    for (int x = Center_X - Surrounding_Chunks_Count * CHUNK_SIZE; x <= Center_X + Surrounding_Chunks_Count * CHUNK_SIZE; x += CHUNK_SIZE) {
+        for (int y = Center_Y - Surrounding_Chunks_Count * CHUNK_SIZE; y <= Center_Y + Surrounding_Chunks_Count * CHUNK_SIZE; y += CHUNK_SIZE) {
+            Chunk* chunk = world->Get_Chunk(x, y);
+
+            if (chunk != nullptr) {
+                int Previus_All_Objects_Size = All_Objects.size();
+                All_Objects.resize(All_Objects.size() + chunk->Objects.size());
+                for (int i = 0; i < chunk->Objects.size(); i++) {
+                    All_Objects[Previus_All_Objects_Size + i] = chunk->Objects[i];
+                }
             }
         }
+    }
+
+    //Sort the objects by their Z coordinate
+    sort(All_Objects.begin(), All_Objects.end(), [](Object* a, Object* b) {
+        return a->Position->Z < b->Position->Z;
+    });
+
+    //Because the chunks objects are already ordered so that the first result is always the BG tile
+    //Show the tiles in the window depending on the FOV and the render distance
+    for (int i = 0; i < All_Objects.size(); i++) {
+        All_Objects[i]->Render();
     }
 }
 

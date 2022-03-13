@@ -27,7 +27,17 @@ int main(int argc, char** argv)
     for (int i = 0; i < 1000; i++) {
         for (int j = 0; j < 1000; j++) {
             //create a test tile with Air.png
-            Tile* tile = new Tile(TILE_IMAGES::GRASS, 1, 1, i, j);
+            Tile* tile = new Tile(TILE_IMAGES::GRASS, 1, 1, i, j, 2);
+
+            //add the tile to the world
+            world->Add_Tile(tile);
+        }
+    }
+
+    for (int i = 0; i < 1000; i++) {
+        for (int j = 0; j < 1000; j++) {
+            //create a test tile with Air.png
+            Tile* tile = new Tile(TILE_IMAGES::AIR, 1, 1, i, j, 2 - (rand() % 2 ? 1 : -1));
 
             //add the tile to the world
             world->Add_Tile(tile);

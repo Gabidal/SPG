@@ -19,7 +19,7 @@ public:
 
 	Object(OBJECT_TYPES type);
 
-	Object(OBJECT_TYPES type, float x, float y);
+	Object(OBJECT_TYPES type, float x, float y, float z);
 
 	//This function is used to render the object 
 	virtual void Render() {}

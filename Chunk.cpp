@@ -1,12 +1,19 @@
 #include "Chunk.h"
+#include "Vector.h"
 
 int CHUNK_SIZE = 16;
 
 Tile* Chunk::Get_Tile(int x, int y) {
-    for (int i = 0; i < Tiles.size(); i++) {
-        if (Tiles[i]->Position->X == x && Tiles[i]->Position->Y == y) {
-            return (Tile*)Tiles[i];
+    //because SDL library doesnt have Z axis support we need to make
+    //a hacky style by sorting the chunks objects by their Z coordinate to draw
+    //the lower objects first.
+    //This is a very inefficient way of doing this but it works for now.
+
+    for (int i = 0; i < Objects.size(); i++) {
+        if (Objects[i]->Position->X == x && Objects[i]->Position->Y == y) {
+            return (Tile*)Objects[i];
         }
     }
+
     return nullptr;
 }

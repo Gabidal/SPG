@@ -13,9 +13,7 @@ using namespace std;
 
 class Chunk{
 public:
-    vector<Object*> Tiles;
-    vector<Object*> Entities;
-    vector<Object*> Particles;
+    vector<Object*> Objects;
 
     Tile* Get_Tile(int x, int y);
 };

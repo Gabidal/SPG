@@ -21,8 +21,8 @@ Object::Object(OBJECT_TYPES type) {
 	Velocity = new FloatVector(0, 0);
 }
 
-Object::Object(OBJECT_TYPES type, float x, float y) {
+Object::Object(OBJECT_TYPES type, float x, float y, float z) {
 	Type = type;
-	Position = new FloatVector(x, y);
+	Position = new FloatVector(x, y, z);
 	Velocity = new FloatVector(0, 0);
 }
