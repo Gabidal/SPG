@@ -1,13 +1,16 @@
 #include "Render.h"
 
 #include "SDL/SDL.h"
+#include "Tile.h"
+#include "World.h"
+#include "Vector.h"
 
 SDL_Renderer* RENDER::Renderer;
 SDL_Window* RENDER::Window;
 int RENDER::Width;
 int RENDER::Height;
 
-Vector RENDER::Camera;
+FloatVector RENDER::Camera;
 
 void RENDER::Start_Window(int width, int height){
     SDL_Init(SDL_INIT_VIDEO);
@@ -22,25 +25,20 @@ void RENDER::Start_Window(int width, int height){
 
 void RENDER::Render(World* world){
     //Show the tiles in the window depending on the FOV and the render distance
-    for(int i = 0; i < world->Tile_Buffer.size(); i++){
-        if((world->Tile_Buffer[i]->Position->X - Camera.X + 1) >= 0 && (world->Tile_Buffer[i]->Position->X - Camera.X) < FOV * 2 && (world->Tile_Buffer[i]->Position->Y - Camera.Y + 1) >= 0 && (world->Tile_Buffer[i]->Position->Y - Camera.Y) < FOV * 2){
-            //Render the tile
-            world->Tile_Buffer[i]->Render();
+    for(int x = 0; x <= RENDER::FOV * 2; x++){
+        for(int y = 0; y <= RENDER::FOV * 2; y++){
+            //Get the tile at the current position
+            Tile* tile = world->Get_Tile(RENDER::Camera.X + x, RENDER::Camera.Y + y);
+
+            //If the tile is not null
+            if(tile != nullptr){
+                //Render the tile
+                tile->Render();
+            }
         }
     }
 }
 
 void RENDER::Update(World* world){
     //Update all the objects in the world
-    for(int i = 0; i < world->Tile_Buffer.size(); i++){
-        world->Tile_Buffer[i]->Update();
-    }
-
-    for(int i = 0; i < world->Entity_Buffer.size(); i++){
-        world->Entity_Buffer[i]->Update();
-    }
-
-    for(int i = 0; i < world->Particle_Buffer.size(); i++){
-        world->Particle_Buffer[i]->Update();
-    }
 }

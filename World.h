@@ -1,18 +1,27 @@
 #ifndef _WORLD_H_
 #define _WORLD_H_
 
-#include <vector>
-
-#include "Object.h"
+#include <map>
+#include <string>
 
 using namespace std;
 
+extern int CHUNK_SIZE;
+
+class Chunk;
+class Tile;
+
 class World {
 public:
-	vector<Object*> Tile_Buffer;
-	vector<Object*> Entity_Buffer;
-	vector<Object*> Particle_Buffer;
+	map<string, Chunk*> Chunks;
 
+	Chunk* Get_Chunk(int x, int y);
+
+	Tile* Get_Tile(int x, int y);
+
+	void Add_Tile(Tile* tile);
+
+	string Get_Chunk_Key(int x, int y);
 };
 
 #endif

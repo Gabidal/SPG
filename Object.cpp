@@ -1,6 +1,6 @@
 #include "Object.h"
-
 #include "Render.h"
+#include "Vector.h"
 
 SDL_Rect Object::Compute_SDL_Rect()
 {
@@ -13,4 +13,16 @@ SDL_Rect Object::Compute_SDL_Rect()
 		Width * Tile_Scale,
 		Height * Tile_Scale
 	};
+}
+
+Object::Object(OBJECT_TYPES type) {
+	Type = type;
+	Position = new FloatVector(0, 0);
+	Velocity = new FloatVector(0, 0);
+}
+
+Object::Object(OBJECT_TYPES type, float x, float y) {
+	Type = type;
+	Position = new FloatVector(x, y);
+	Velocity = new FloatVector(0, 0);
 }

@@ -1,9 +1,10 @@
 #ifndef _RENDER_H_
 #define _RENDER_H_
 
-#include "World.h"
-
 #include "SDL/SDL.h"
+#include "Vector.h"
+
+class World;
 
 namespace RENDER{
     //Renderer handle for SDL2
@@ -12,7 +13,7 @@ namespace RENDER{
 
     extern int Width;
     extern int Height;
-    extern Vector Camera;
+    extern FloatVector Camera;
 
     //This render distnce is used to determine how big of a buffer if given to openGL to render the world.
     //Every unit of distance is a tile
@@ -22,8 +23,6 @@ namespace RENDER{
     const int FOV = 5;
 
     const bool Full_Screen = false;
-
-
 
     //This function starts the window
     void Start_Window(int Width, int Height);
