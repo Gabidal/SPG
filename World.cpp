@@ -1,5 +1,6 @@
 #include "World.h"
 #include "Chunk.h"
+#include "Object.h"
 
 Chunk* World::Get_Chunk(int x, int y) {
 	//Normalize the tile coordinates to fir the chunks top left corner
@@ -13,37 +14,37 @@ Chunk* World::Get_Chunk(int x, int y) {
 	return nullptr;
 }
 
-Tile* World::Get_Tile(int x, int y) {
+Object* World::Get_Object(int x, int y) {
 	//Get the chunk that the tile is in
 	Chunk* chunk = Get_Chunk(x, y);
 
 	//If the chunk is not null
 	if (chunk != nullptr) {
 		//Get the tile from the chunk
-		return chunk->Get_Tile(x, y);
+		return chunk->Get_Object(x, y);
 	}
 
 	return nullptr;
 }
 
-void World::Add_Tile(Tile* tile) {
+void World::Add_Object(Object* object) {
 	//Get the chunk that the tile is in
-	Chunk* chunk = Get_Chunk(tile->Position->X, tile->Position->Y);
+	Chunk* chunk = Get_Chunk(object->Position->X, object->Position->Y);
 
 	//If the chunk is not null
 	if (chunk != nullptr) {
 		//Add the tile to the chunk
-		chunk->Objects.push_back(tile);
+		chunk->Objects.push_back(object);
 	}
 	else {
 		//Create a new chunk
 		Chunk* new_chunk = new Chunk();
 
 		//Add the tile to the chunk
-		new_chunk->Objects.push_back(tile);
+		new_chunk->Objects.push_back(object);
 
 		//Add the chunk to the world
-		Chunks[Get_Chunk_Key(tile->Position->X, tile->Position->Y)] = new_chunk;
+		Chunks[Get_Chunk_Key(object->Position->X, object->Position->Y)] = new_chunk;
 	}
 }
 

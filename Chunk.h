@@ -15,7 +15,7 @@ class Chunk{
 public:
     vector<Object*> Objects;
 
-    Tile* Get_Tile(int x, int y);
+    Tile* Get_Object(int x, int y);
 };
 
 #endif

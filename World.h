@@ -7,9 +7,10 @@
 using namespace std;
 
 extern int CHUNK_SIZE;
+extern int CHUNK_AMOUNT_SQRT;
 
 class Chunk;
-class Tile;
+class Object;
 
 class World {
 public:
@@ -17,9 +18,9 @@ public:
 
 	Chunk* Get_Chunk(int x, int y);
 
-	Tile* Get_Tile(int x, int y);
+	Object* Get_Object(int x, int y);
 
-	void Add_Tile(Tile* tile);
+	void Add_Object(Object* object);
 
 	string Get_Chunk_Key(int x, int y);
 };
