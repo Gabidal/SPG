@@ -26,7 +26,7 @@ int main(int argc, char** argv)
     //Create the world
     World* world = new World();
 
-    Generate_Terrain(&world);
+    Generate_Terrain(world);
 
     SDL_Texture* Render_Buffer = SDL_CreateTexture(RENDER::Renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, RENDER::Width, RENDER::Height);
 

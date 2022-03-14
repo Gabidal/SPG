@@ -2,8 +2,12 @@
 #include "World.h"
 #include "Object.h"
 #include "Vector.h"
+#include "Tile.h"
+#include "Chunk.h"
 
-void Generate_Terrain(World** world) {
+void Generate_Terrain(World* world) {
+
+	Seed_Terrain(world);
 
 	//We want the 16x16 chunk size so it is same as our chunk size
 	string Arguments = "-res 1 -world_size " + to_string(CHUNK_AMOUNT_SQRT);
@@ -17,7 +21,7 @@ void Generate_Terrain(World** world) {
 	//Now that we have the list of nodes we want to convert them to chunks
 	for (int c_x = 0; c_x < CHUNK_AMOUNT_SQRT; c_x++) {
 		for (int c_y = 0; c_y < CHUNK_AMOUNT_SQRT; c_y++) {
-			int Chunk_Index = CHUNK_AMOUNT_SQRT * c_x + c_y;
+			int Chunk_Index = (CHUNK_AMOUNT_SQRT * c_x + c_y) * CHUNK_SIZE * CHUNK_SIZE;
 
 			for (int x = 0; x < CHUNK_SIZE; x++) {
 				for (int y = 0; y < CHUNK_SIZE; y++) {
@@ -27,12 +31,12 @@ void Generate_Terrain(World** world) {
 					//Set the x & y based on the forloop x & y values
 					Object* object = new Object(
 						(OBJECT_TYPES)Nodes[Chunk_Index + Node_index]->Color,
-						(float)x,
-						(float)y,
+						(float)x + c_x * CHUNK_SIZE,
+						(float)y + c_y * CHUNK_SIZE,
 						(float)Nodes[Chunk_Index + Node_index]->Y
 					);
 
-					((World*)world)->Add_Object(object);
+					world->Add_Object(object);
 				}
 			}
 
@@ -40,4 +44,31 @@ void Generate_Terrain(World** world) {
 	}
 
 	return;
+}
+
+void Seed_Terrain(World* world)
+{
+	for (int c_x = 0; c_x < CHUNK_AMOUNT_SQRT; c_x++) {
+		for (int c_y = 0; c_y < CHUNK_AMOUNT_SQRT; c_y++) {
+			int Chunk_Index = (CHUNK_AMOUNT_SQRT * c_x + c_y) * CHUNK_SIZE * CHUNK_SIZE;
+
+			for (int x = 0; x < CHUNK_SIZE; x++) {
+				for (int y = 0; y < CHUNK_SIZE; y++) {
+					int Node_index = CHUNK_SIZE * x + y;
+
+					//The Y in TerGen is same as our Z axis
+					//Set the x & y based on the forloop x & y values
+					Tile* tile = new Tile(TILE_IMAGES::GRASS,
+						1, 1,
+						(float)x + c_x * CHUNK_SIZE,
+						(float)y + c_y * CHUNK_SIZE,
+						(float)0
+					);
+
+					world->Add_Object(tile);
+				}
+			}
+
+		}
+	}
 }
