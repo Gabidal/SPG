@@ -2,21 +2,27 @@
 #include "Chunk.h"
 #include "Object.h"
 
-Chunk* World::Get_Chunk(int x, int y) {
-	//Normalize the tile coordinates to fir the chunks top left corner
-	x = x - (x % CHUNK_SIZE);
-	y = y - (y % CHUNK_SIZE);
-
-	string key = to_string(x) + "," + to_string(y);
+Chunk* World::Get_Chunk(Chunk_Coordinates cc)
+{
+	string key = to_string((int)cc.X) + "," + to_string((int)cc.Y);
 	if (Chunks.find(key) != Chunks.end()) {
 		return Chunks[key];
 	}
 	return nullptr;
 }
 
-Object* World::Get_Object(int x, int y) {
+Chunk* World::Get_Chunk(Node_Coordinates nc)
+{	
+	string key = Get_Chunk_Key(nc.X, nc.Y);
+	if (Chunks.find(key) != Chunks.end()) {
+		return Chunks[key];
+	}
+	return nullptr;
+}
+
+Object* World::Get_Object(float x, float y) {
 	//Get the chunk that the tile is in
-	Chunk* chunk = Get_Chunk(x, y);
+	Chunk* chunk = Get_Chunk(Node_Coordinates{x, y});
 
 	//If the chunk is not null
 	if (chunk != nullptr) {
@@ -29,7 +35,7 @@ Object* World::Get_Object(int x, int y) {
 
 void World::Add_Object(Object* object) {
 	//Get the chunk that the tile is in
-	Chunk* chunk = Get_Chunk(object->Position->X, object->Position->Y);
+	Chunk* chunk = Get_Chunk(Node_Coordinates{ object->Position->X, object->Position->Y });
 
 	//If the chunk is not null
 	if (chunk != nullptr) {
@@ -48,10 +54,10 @@ void World::Add_Object(Object* object) {
 	}
 }
 
-string World::Get_Chunk_Key(int x, int y) {
+string World::Get_Chunk_Key(float x, float y) {
 	//Normalise the tile coordinates to the chunks top left corner
-	x = x - (x % CHUNK_SIZE);
-	y = y - (y % CHUNK_SIZE);
+	int X = x - ((int)x % CHUNK_SIZE);
+	int Y = y - ((int)y % CHUNK_SIZE);
 
-	return to_string(x) + "," + to_string(y);
+	return to_string(X) + "," + to_string(Y);
 }

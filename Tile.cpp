@@ -8,7 +8,7 @@ void Tile::Render() {
     SDL_RenderCopy(RENDER::Renderer, Image->Texture, NULL, &tmp);
 }
 
-Tile::Tile(string tile_image, int width, int height, int x, int y, int z) : Object(OBJECT_TYPES::TILE, x, y, z) {
+Tile::Tile(string tile_image, int width, int height, float x, float y, float z) : Object(OBJECT_TYPES::TILE, x, y, z) {
     Image = File_Loader::Load_File(tile_image);
     Width = width;
     Height = height;

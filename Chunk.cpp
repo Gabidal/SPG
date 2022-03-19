@@ -4,7 +4,7 @@
 int CHUNK_SIZE = 16;
 int CHUNK_AMOUNT_SQRT = 100; //total amount is CHUNK_AMOUNT_SQRT^2
 
-Tile* Chunk::Get_Object(int x, int y) {
+Tile* Chunk::Get_Object(float x, float y) {
     //because SDL library doesnt have Z axis support we need to make
     //a hacky style by sorting the chunks objects by their Z coordinate to draw
     //the lower objects first.

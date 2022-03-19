@@ -20,7 +20,7 @@ class Tile : public Object {
 public:
     File* Image;
 
-    Tile(string tile_image, int width, int height, int x, int y, int z);
+    Tile(string tile_image, int width, int height, float x, float y, float z);
 
     virtual void Render() override;
 };

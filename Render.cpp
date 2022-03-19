@@ -7,6 +7,7 @@
 #include "World.h"
 #include "Vector.h"
 #include "Chunk.h"
+#include "TerGen.h"
 
 SDL_Renderer* RENDER::Renderer;
 SDL_Window* RENDER::Window;
@@ -27,29 +28,21 @@ void RENDER::Start_Window(int width, int height){
 }
 
 void RENDER::Render(World* world){
-    //Calculate the current center chunk
-    int Center_X = (int)Camera.X / CHUNK_SIZE * CHUNK_SIZE;
-    int Center_Y = (int)Camera.Y / CHUNK_SIZE * CHUNK_SIZE;
-
-    //Calculate how many chunksare there to render in next to the center Chunk
-    int Surrounding_Chunks_Count = RENDER::FOV / CHUNK_SIZE + 1;
-
     //Gather all the objects in all the surrounding chunks
     vector<Object*> All_Objects;
 
-    for (int x = Center_X - Surrounding_Chunks_Count * CHUNK_SIZE; x <= Center_X + Surrounding_Chunks_Count * CHUNK_SIZE; x += CHUNK_SIZE) {
-        for (int y = Center_Y - Surrounding_Chunks_Count * CHUNK_SIZE; y <= Center_Y + Surrounding_Chunks_Count * CHUNK_SIZE; y += CHUNK_SIZE) {
-            Chunk* chunk = world->Get_Chunk(x, y);
+    Generate_Background_Tiles(world);
 
-            if (chunk != nullptr) {
-                int Previus_All_Objects_Size = All_Objects.size();
-                All_Objects.resize(All_Objects.size() + chunk->Objects.size());
-                for (int i = 0; i < chunk->Objects.size(); i++) {
-                    All_Objects[Previus_All_Objects_Size + i] = chunk->Objects[i];
-                }
+    For_Each_Object_In_View([&](int x, int y){
+        Chunk* chunk = world->Get_Chunk(Chunk_Coordinates{x, y});
+        if (chunk != nullptr) {
+            int Previus_All_Objects_Size = All_Objects.size();
+            All_Objects.resize(All_Objects.size() + chunk->Objects.size());
+            for (int i = 0; i < chunk->Objects.size(); i++) {
+                All_Objects[Previus_All_Objects_Size + i] = chunk->Objects[i];
             }
         }
-    }
+    });
 
     //Sort the objects by their Z coordinate
     sort(All_Objects.begin(), All_Objects.end(), [](Object* a, Object* b) {
@@ -65,4 +58,19 @@ void RENDER::Render(World* world){
 
 void RENDER::Update(World* world){
     //Update all the objects in the world
+}
+
+void RENDER::For_Each_Object_In_View(function<void(int, int)> lambda){
+    //Calculate the current center chunk
+    int Center_X = (int)Camera.X / CHUNK_SIZE * CHUNK_SIZE;
+    int Center_Y = (int)Camera.Y / CHUNK_SIZE * CHUNK_SIZE;
+
+    //Calculate how many chunksare there to render in next to the center Chunk
+    int Surrounding_Chunks_Count = RENDER::FOV / CHUNK_SIZE + 1;
+
+    for (int x = Center_X - Surrounding_Chunks_Count * CHUNK_SIZE; x <= Center_X + Surrounding_Chunks_Count * CHUNK_SIZE; x += CHUNK_SIZE) {
+        for (int y = Center_Y - Surrounding_Chunks_Count * CHUNK_SIZE; y <= Center_Y + Surrounding_Chunks_Count * CHUNK_SIZE; y += CHUNK_SIZE) {
+            lambda(x, y);
+        }
+    }
 }

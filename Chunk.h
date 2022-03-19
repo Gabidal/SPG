@@ -14,8 +14,9 @@ using namespace std;
 class Chunk{
 public:
     vector<Object*> Objects;
+    bool Has_Background = false;
 
-    Tile* Get_Object(int x, int y);
+    Tile* Get_Object(float x, float y);
 };
 
 #endif
