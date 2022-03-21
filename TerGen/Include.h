@@ -41,6 +41,9 @@ public:
 [[nodiscard]]
 extern std::vector<Node*> TerGen(std::string args, std::vector<FUNCTION> functions);
 
+class TerGen_Chunk;
+class Node;
+
 class TerGen_Chunk_Coordinates {
 public:
     int X;
@@ -65,12 +68,11 @@ public:
 
 namespace UTILS
 {
-    class Chunk;
-
     extern unsigned char Get_Free_Color();
-    extern Chunk* Get_Chunk(TerGen_Chunk_Coordinates coordinates);
-    extern Chunk* Get_Chunk(TerGen_Node_Coordinates coordinates);
+    extern TerGen_Chunk* Get_Chunk(TerGen_Chunk_Coordinates coordinates);
+    extern TerGen_Chunk* Get_Chunk(TerGen_Node_Coordinates coordinates);
     extern Node* Get_Node(int x, int z);
+    extern void For_All_Nodes(std::vector<Node*> nodes, std::function<void(Node*, double, double)> lambda);
     extern void For_All_Nodes(std::function<void(Node*, double, double)> lambda);
 }
 

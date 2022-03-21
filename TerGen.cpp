@@ -11,29 +11,50 @@
 
 using namespace std;
 
+void Foo(Pattern* p) {
+	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
+		int r = rand() % (int)TILE_TYPES::COUNT;
+
+		p->Nodes[i].Color = r;
+		p->Nodes[i].Y = -1;
+	}
+}
+
 void Generate_Terrain(World* world) {
 	//We want the 16x16 chunk size so it is same as our chunk size
 	string Arguments = "-res 1 -world_size " + to_string(CHUNK_AMOUNT_SQRT);
 
-	vector<Node*> Nodes = TerGen(Arguments, {});
+	vector<Node*> Nodes = TerGen(Arguments, {
+		Foo
+	});
 
 	if (Nodes.size() == 0) {
 		throw::exception("TerGen returned list size of 0!?");
 	}
 
-	UTILS::For_All_Nodes([world](Node* node, double x, double y) {
+	UTILS::For_All_Nodes(Nodes, [world](Node* node, double x, double y) {
 		//The Y in TerGen is same as our Z axis
 		//Set the x & y based on the forloop x & y values
-		Object* object = new Object(
-			(OBJECT_TYPES)node->Color,
-			x,
-			y,
-			node->Y
-		);
-		world->Add_Object(object);
+		world->Add_Object(Get_Right_Object(node, x, y));
 	});
 
 	return;
+}
+
+Object* Get_Right_Object(Node* node, int x, int y) {
+	Tile* Result = nullptr;
+
+	string Tile_Type = Get_Tile_Image((TILE_TYPES)node->Color);
+
+	Result = new Tile(
+		Tile_Type,
+		1,
+		1,
+		x, y,
+		node->Y
+	);
+
+	return Result;
 }
 
 void Seed_Terrain(World* world)

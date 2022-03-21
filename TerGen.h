@@ -9,6 +9,8 @@ class Object;
 
 extern void Generate_Terrain(World* world);
 
+extern Object* Get_Right_Object(Node*, int, int);
+
 extern void Seed_Terrain(World* world);
 
 extern void Generate_Background_Tiles(World* world);

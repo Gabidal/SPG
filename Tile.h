@@ -10,7 +10,17 @@ using namespace std;
 namespace TILE_IMAGES{
     const string AIR = "Air.png";
     const string GRASS = "Grass.png";
+    const string ROCK = "Rock.png";
 }
+
+enum class TILE_TYPES{
+    AIR,
+    GRASS,
+    ROCK,
+    COUNT
+};
+
+extern string Get_Tile_Image(TILE_TYPES name);
 
 class File;
 

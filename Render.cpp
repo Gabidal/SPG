@@ -62,14 +62,14 @@ void RENDER::Update(World* world){
 
 void RENDER::For_Each_Object_In_View(function<void(int, int)> lambda){
     //Calculate the current center chunk
-    int Center_X = (int)Camera.X / CHUNK_SIZE * CHUNK_SIZE;
-    int Center_Y = (int)Camera.Y / CHUNK_SIZE * CHUNK_SIZE;
+    int Left = (int)Camera.X / CHUNK_SIZE * CHUNK_SIZE;
+    int Top = (int)Camera.Y / CHUNK_SIZE * CHUNK_SIZE;
 
     //Calculate how many chunksare there to render in next to the center Chunk
     int Surrounding_Chunks_Count = RENDER::FOV / CHUNK_SIZE + 1;
 
-    for (int x = Center_X - Surrounding_Chunks_Count * CHUNK_SIZE; x <= Center_X + Surrounding_Chunks_Count * CHUNK_SIZE; x += CHUNK_SIZE) {
-        for (int y = Center_Y - Surrounding_Chunks_Count * CHUNK_SIZE; y <= Center_Y + Surrounding_Chunks_Count * CHUNK_SIZE; y += CHUNK_SIZE) {
+    for (int x = Left - Surrounding_Chunks_Count * CHUNK_SIZE; x <= Left + Surrounding_Chunks_Count * CHUNK_SIZE; x += CHUNK_SIZE) {
+        for (int y = Top - Surrounding_Chunks_Count * CHUNK_SIZE; y <= Top + Surrounding_Chunks_Count * CHUNK_SIZE; y += CHUNK_SIZE) {
             lambda(x, y);
         }
     }

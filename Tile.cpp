@@ -13,3 +13,18 @@ Tile::Tile(string tile_image, int width, int height, float x, float y, float z) 
     Width = width;
     Height = height;
 }
+
+string Get_Tile_Image(TILE_TYPES name){
+    switch(name){
+        case TILE_TYPES::AIR:
+            return TILE_IMAGES::AIR;
+        case TILE_TYPES::GRASS:
+            return TILE_IMAGES::GRASS;
+        case TILE_TYPES::ROCK:
+            return TILE_IMAGES::ROCK;
+        default: {
+            
+            return "";
+        }
+    }
+}
