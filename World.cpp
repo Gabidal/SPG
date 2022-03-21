@@ -34,6 +34,8 @@ Object* World::Get_Object(float x, float y) {
 }
 
 void World::Add_Object(Object* object) {
+	if (object == nullptr)
+		return;
 	//Get the chunk that the tile is in
 	Chunk* chunk = Get_Chunk(Node_Coordinates{ object->Position->X, object->Position->Y });
 
@@ -58,6 +60,9 @@ string World::Get_Chunk_Key(float x, float y) {
 	//Normalise the tile coordinates to the chunks top left corner
 	int X = x - ((int)x % CHUNK_SIZE);
 	int Y = y - ((int)y % CHUNK_SIZE);
+
+	/*int X = x / CHUNK_SIZE;
+	int Y = y / CHUNK_SIZE;*/
 
 	return to_string(X) + "," + to_string(Y);
 }

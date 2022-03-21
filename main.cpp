@@ -13,6 +13,8 @@
 
 #include "TerGen.h"
 
+extern FloatVector RENDER::Camera;
+
 using namespace std;
 
 int main(int argc, char** argv)
@@ -26,7 +28,14 @@ int main(int argc, char** argv)
     //Create the world
     World* world = new World();
 
+    RENDER::Camera.X = 0;
+    RENDER::Camera.Y = 0;
+
     Generate_Terrain(world);
+
+    /*world->Add_Object(new Tile("Rock.png", 3, 3, 1, 1, 0));
+    world->Add_Object(new Tile("Grass.png", 2, 2, 0, 0, 0));
+    world->Add_Object(new Tile("Rock.png", 4, 4, 0, -1, 0));*/
 
     SDL_Texture* Render_Buffer = SDL_CreateTexture(RENDER::Renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, RENDER::Width, RENDER::Height);
 

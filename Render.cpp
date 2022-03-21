@@ -46,7 +46,16 @@ void RENDER::Render(World* world){
 
     //Sort the objects by their Z coordinate
     sort(All_Objects.begin(), All_Objects.end(), [](Object* a, Object* b) {
-        return a->Position->Z < b->Position->Z;
+        if (a->Position->Z != b->Position->Z)
+            return a->Position->Z < b->Position->Z;
+
+        int Difference = (a->Position->Y + a->Height) - (b->Position->Y + b->Height);
+        
+        if (Difference == 0) {
+            return a->Height * a->Width < b->Height* b->Width;
+        }
+
+        return Difference < 0;
     });
 
     //Because the chunks objects are already ordered so that the first result is always the BG tile

@@ -11,12 +11,12 @@
 
 using namespace std;
 
-void Foo(Pattern* p) {
+void Rock_Generator(Pattern* p) {
 	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
 		int r = rand() % (int)TILE_TYPES::COUNT;
 
 		p->Nodes[i].Color = r;
-		p->Nodes[i].Y = -1;
+		p->Nodes[i].Y = 1;
 	}
 }
 
@@ -25,17 +25,17 @@ void Generate_Terrain(World* world) {
 	string Arguments = "-res 1 -world_size " + to_string(CHUNK_AMOUNT_SQRT);
 
 	vector<Node*> Nodes = TerGen(Arguments, {
-		Foo
+		Rock_Generator
 	});
 
 	if (Nodes.size() == 0) {
 		throw::exception("TerGen returned list size of 0!?");
 	}
 
-	UTILS::For_All_Nodes(Nodes, [world](Node* node, double x, double y) {
+	UTILS::For_All_Nodes(Nodes, [world](Node* node, double x, double y, double Chunk_X, double Chunk_Y) {
 		//The Y in TerGen is same as our Z axis
 		//Set the x & y based on the forloop x & y values
-		world->Add_Object(Get_Right_Object(node, x, y));
+		world->Add_Object(Get_Right_Object(node, Chunk_X + x, Chunk_Y + y));
 	});
 
 	return;
@@ -46,10 +46,19 @@ Object* Get_Right_Object(Node* node, int x, int y) {
 
 	string Tile_Type = Get_Tile_Image((TILE_TYPES)node->Color);
 
+	if (Tile_Type == "")
+		return nullptr;
+
+	int Size = 1;
+
+	if (((TILE_TYPES)node->Color) == TILE_TYPES::TREE) {
+		Size = 2 + rand() % (5 - 2);
+	}
+
 	Result = new Tile(
 		Tile_Type,
-		1,
-		1,
+		Size,
+		Size,
 		x, y,
 		node->Y
 	);

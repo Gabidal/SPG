@@ -11,12 +11,27 @@ namespace TILE_IMAGES{
     const string AIR = "Air.png";
     const string GRASS = "Grass.png";
     const string ROCK = "Rock.png";
+    const string BIRCH = "Birch.png";
+    const string OAK = "Oak.png";
+    const string RIKKA = "Rikka.png";
+    const string CACTUS = "Cactus.png";
 }
 
 enum class TILE_TYPES{
     AIR,
     GRASS,
     ROCK,
+    TREE,
+    RIKKA,
+    CACTUS,
+    CRAB,
+    COUNT
+};
+
+enum class TREE_TYPES {
+    AIR,
+    OAK,
+    BIRCH,
     COUNT
 };
 
