@@ -75,7 +75,7 @@ void RENDER::For_Each_Object_In_View(function<void(int, int)> lambda){
     int Top = (int)Camera.Y / CHUNK_SIZE * CHUNK_SIZE;
 
     //Calculate how many chunksare there to render in next to the center Chunk
-    int Surrounding_Chunks_Count = RENDER::FOV / CHUNK_SIZE + 1;
+    int Surrounding_Chunks_Count = RENDER::FOV / CHUNK_SIZE + Render_Distance;
 
     for (int x = Left - Surrounding_Chunks_Count * CHUNK_SIZE; x <= Left + Surrounding_Chunks_Count * CHUNK_SIZE; x += CHUNK_SIZE) {
         for (int y = Top - Surrounding_Chunks_Count * CHUNK_SIZE; y <= Top + Surrounding_Chunks_Count * CHUNK_SIZE; y += CHUNK_SIZE) {

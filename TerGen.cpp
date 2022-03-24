@@ -13,10 +13,29 @@ using namespace std;
 
 void Rock_Generator(Pattern* p) {
 	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
-		int r = rand() % (int)TILE_TYPES::COUNT;
-
-		p->Nodes[i].Color = r;
 		p->Nodes[i].Y = 1;
+		p->Nodes[i].Color = p->Color;
+	}
+}
+
+void Tree_Generator(Pattern* p) {
+	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
+		p->Nodes[i].Y = 1;
+		p->Nodes[i].Color = p->Color;
+	}
+}
+
+void Rikka_Generator(Pattern* p) {
+	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
+		p->Nodes[i].Y = 1;
+		p->Nodes[i].Color = p->Color;
+	}
+}
+
+void Cactus_Generator(Pattern* p) {
+	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
+		p->Nodes[i].Y = 1;
+		p->Nodes[i].Color = p->Color;
 	}
 }
 
@@ -25,7 +44,10 @@ void Generate_Terrain(World* world) {
 	string Arguments = "-res 1 -world_size " + to_string(CHUNK_AMOUNT_SQRT);
 
 	vector<Node*> Nodes = TerGen(Arguments, {
-		Rock_Generator
+		{Rock_Generator, 0.3},
+		{Tree_Generator, 0.3},
+		{Rikka_Generator, 0.3},
+		{Cactus_Generator, 0.3}
 	});
 
 	if (Nodes.size() == 0) {

@@ -28,8 +28,8 @@ int main(int argc, char** argv)
     //Create the world
     World* world = new World();
 
-    RENDER::Camera.X = 0;
-    RENDER::Camera.Y = 0;
+    RENDER::Camera.X = 32;
+    RENDER::Camera.Y = 32;
 
     Generate_Terrain(world);
 

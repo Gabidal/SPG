@@ -17,12 +17,11 @@ namespace RENDER{
     extern int Height;
     extern FloatVector Camera;
 
-    //This render distnce is used to determine how big of a buffer if given to openGL to render the world.
-    //Every unit of distance is a tile
-    const int Render_Distance = 10; 
+    //This tells how many chunks are rendered around the camera
+    const int Render_Distance = 2; 
 
-    //This tells how many tiles are rendered in a window from the center of the screen
-    const int FOV = 5;
+    //This tells how many tiles is fitted to a single row
+    const int FOV = 10;
 
     const bool Full_Screen = false;
 
