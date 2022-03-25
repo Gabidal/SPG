@@ -18,10 +18,10 @@ namespace RENDER{
     extern FloatVector Camera;
 
     //This tells how many chunks are rendered around the camera
-    const int Render_Distance = 2; 
+    const int Render_Distance = 5; 
 
     //This tells how many tiles is fitted to a single row
-    const int FOV = 10;
+    const int FOV = 100;
 
     const bool Full_Screen = false;
 

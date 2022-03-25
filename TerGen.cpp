@@ -7,46 +7,20 @@
 #include "Object.h"
 #include "World.h"
 
+#include "Functions.h"
+
 #include <map>
 
 using namespace std;
-
-void Rock_Generator(Pattern* p) {
-	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
-		p->Nodes[i].Y = 1;
-		p->Nodes[i].Color = p->Color;
-	}
-}
-
-void Tree_Generator(Pattern* p) {
-	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
-		p->Nodes[i].Y = 1;
-		p->Nodes[i].Color = p->Color;
-	}
-}
-
-void Rikka_Generator(Pattern* p) {
-	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
-		p->Nodes[i].Y = 1;
-		p->Nodes[i].Color = p->Color;
-	}
-}
-
-void Cactus_Generator(Pattern* p) {
-	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
-		p->Nodes[i].Y = 1;
-		p->Nodes[i].Color = p->Color;
-	}
-}
 
 void Generate_Terrain(World* world) {
 	//We want the 16x16 chunk size so it is same as our chunk size
 	string Arguments = "-res 1 -world_size " + to_string(CHUNK_AMOUNT_SQRT);
 
 	vector<Node*> Nodes = TerGen(Arguments, {
-		{Rock_Generator, 0.3},
+		{Rikka_Generator, 1},
+		{Rock_Generator, 0.0},
 		{Tree_Generator, 0.3},
-		{Rikka_Generator, 0.3},
 		{Cactus_Generator, 0.3}
 	});
 
@@ -66,19 +40,21 @@ void Generate_Terrain(World* world) {
 Object* Get_Right_Object(Node* node, int x, int y) {
 	Tile* Result = nullptr;
 
-	string Tile_Type = Get_Tile_Image((TILE_TYPES)node->Color);
+	TILE_TYPES Tile_Type = Get_Tile_Type(node->Color);
 
-	if (Tile_Type == "")
+	string Tile_Image = Get_Tile_Image(Tile_Type);
+
+	if (Tile_Image == "")
 		return nullptr;
 
 	int Size = 1;
 
-	if (((TILE_TYPES)node->Color) == TILE_TYPES::TREE) {
+	if (Tile_Type == TILE_TYPES::TREE) {
 		Size = 2 + rand() % (5 - 2);
 	}
 
 	Result = new Tile(
-		Tile_Type,
+		Tile_Image,
 		Size,
 		Size,
 		x, y,

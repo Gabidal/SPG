@@ -37,6 +37,8 @@ enum class TREE_TYPES {
 
 extern string Get_Tile_Image(TILE_TYPES name);
 
+extern TILE_TYPES Get_Tile_Type(unsigned char color);
+
 class File;
 
 //The window consists of tiles.

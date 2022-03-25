@@ -5,10 +5,11 @@
 #include <string>
 #include <functional>
 
+
+
 class Node {
 public:
     float Y;
-    //Get the right color from the Pattern
     unsigned char Color;
 
     /*Node(float y = 0, char c = 0) {
@@ -49,12 +50,16 @@ public:
     Pattern(int x, int y, Pattern& p);
 
     void Calculate(int x, int z, Node* nodes);
+
+    /*Node& At(int X, int Z) {
+        return Nodes[(CHUNK_SIZE * X) + Z];
+    }*/
 };
 
 //-res [how much points shall there be?]
 //Note the default chunk size is 16x16
 [[nodiscard]]
-extern std::vector<Node*> TerGen(std::string args, std::vector<Packet> Packets);
+extern std::vector<Node*> TerGen(std::string args, std::vector<Packet> functions);
 
 class TerGen_Chunk;
 class Node;
@@ -89,6 +94,9 @@ namespace UTILS
     extern Node* Get_Node(int x, int z);
     extern void For_All_Nodes(std::vector<Node*> nodes, std::function<void(Node*, double, double, double, double)> lambda);
     extern void For_All_Nodes(std::function<void(Node*, double, double, double, double)> lambda);
+
+    extern unsigned char Get_Color(FUNCTION func);
+    extern FUNCTION Get_Function(unsigned char color);
 }
 
 #endif

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <chrono>
+#include <time.h>
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
@@ -30,6 +31,8 @@ int main(int argc, char** argv)
 
     RENDER::Camera.X = 32;
     RENDER::Camera.Y = 32;
+
+    srand(time(0));
 
     Generate_Terrain(world);
 

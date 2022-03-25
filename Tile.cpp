@@ -2,6 +2,9 @@
 #include "Render.h"
 #include "SDL/SDL.h"
 #include "File_Loader.h"
+#include "TerGen/Include.h"
+
+#include "Functions.h"
 
 void Tile::Render() {
     SDL_Rect tmp = Compute_SDL_Rect();
@@ -41,5 +44,22 @@ string Get_Tile_Image(TILE_TYPES name){
             
             return "";
         }
+    }
+}
+
+TILE_TYPES Get_Tile_Type(unsigned char color)
+{
+    FUNCTION func = UTILS::Get_Function(color);
+
+    if (func == Rock_Generator)
+        return TILE_TYPES::ROCK;
+    else if (func == Tree_Generator)
+        return TILE_TYPES::TREE;
+    else if (func == Rikka_Generator)
+        return TILE_TYPES::RIKKA;
+    else if (func == Cactus_Generator)
+        return TILE_TYPES::CACTUS;
+    else {
+        return TILE_TYPES::AIR;
     }
 }
