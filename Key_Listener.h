@@ -3,6 +3,7 @@
 
 namespace KEY_LISTENER{
     void Listen_For_Key_Presses(float delta);
+    void Listen_For_Mouse(float delta);
 }
 
 #endif

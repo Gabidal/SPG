@@ -11,8 +11,11 @@
 #include "Tile.h"
 #include "Key_Listener.h"
 #include "World.h"
+#include "Entity.h"
+#include "Chunk.h"
 
 #include "TerGen.h"
+#include "Chaos/Include.h"
 
 extern FloatVector RENDER::Camera;
 
@@ -29,16 +32,31 @@ int main(int argc, char** argv)
     //Create the world
     World* world = new World();
 
-    RENDER::Camera.X = 32;
-    RENDER::Camera.Y = 32;
+    RENDER::Camera.X = 0;
+    RENDER::Camera.Y = 0;
 
     srand(time(0));
 
     Generate_Terrain(world);
 
-    /*world->Add_Object(new Tile("Rock.png", 3, 3, 1, 1, 0));
-    world->Add_Object(new Tile("Grass.png", 2, 2, 0, 0, 0));
-    world->Add_Object(new Tile("Rock.png", 4, 4, 0, -1, 0));*/
+    Entities_Init();
+    Chaos_Init(0.001);
+
+
+
+    for (int i = 0; i < 100; i++) {
+        FloatVector location = {
+            (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
+            (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
+        };
+		
+        Entity_Type type = (Entity_Type)(rand() % (int)Entity_Type::COUNT);
+        Entity* ent = new Entity(location, type);
+
+        world->Add_Object(ent);
+    }
+
+    //RENDER::Follow = ent;
 
     SDL_Texture* Render_Buffer = SDL_CreateTexture(RENDER::Renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, RENDER::Width, RENDER::Height);
 
@@ -66,15 +84,11 @@ int main(int argc, char** argv)
 
         SDL_RenderCopy(RENDER::Renderer, Render_Buffer, NULL, NULL);
 
-        //SDL_WaitEvent(&event);
         SDL_PumpEvents();
 
-        /*if (event.type == SDL_QUIT)
-        {
-            quit = true;
-        }*/
         //Listen on wasd keypresses to move the camera
         KEY_LISTENER::Listen_For_Key_Presses(Delta);
+        KEY_LISTENER::Listen_For_Mouse(Delta);
 
         SDL_RenderPresent(RENDER::Renderer);
     }

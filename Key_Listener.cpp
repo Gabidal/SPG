@@ -26,3 +26,34 @@ void KEY_LISTENER::Listen_For_Key_Presses(float delta) {
 
     RENDER::Camera = RENDER::Camera.Add(Direction.Normalize().Scale(delta));
 }
+
+void KEY_LISTENER::Listen_For_Mouse(float delta)
+{
+
+    //10% of Render Distance
+    int Render_Part_Incrementer = (RENDER::Max_Render_Distance - RENDER::Min_Render_Distance) / 10;
+    int FOV_Part_incrementer = (RENDER::Max_FOV - RENDER::Min_FOV) / 10;
+
+    SDL_Event Event;
+
+    SDL_PollEvent(&Event);
+
+    if (Event.type == SDL_MOUSEWHEEL)
+    {
+        if (Event.wheel.y > 0) // scroll up
+        {
+            RENDER::Render_Distance = max(RENDER::Render_Distance - Render_Part_Incrementer, RENDER::Min_Render_Distance);
+            RENDER::FOV = max(RENDER::FOV - FOV_Part_incrementer, RENDER::Min_FOV);
+        }
+        else if (Event.wheel.y < 0) // scroll down
+        {
+            RENDER::Render_Distance = min(RENDER::Render_Distance + Render_Part_Incrementer, RENDER::Max_Render_Distance);
+            RENDER::FOV = min(RENDER::FOV + FOV_Part_incrementer, RENDER::Max_FOV);
+        }
+    }
+    else if (Event.type == SDL_MOUSEBUTTONDOWN)
+    {
+        // ... handle mouse clicks ...
+    }
+
+}

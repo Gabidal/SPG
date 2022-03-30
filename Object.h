@@ -5,6 +5,7 @@
 
 enum class OBJECT_TYPES {
 	TILE,
+	ENTITY,
 };
 
 class FloatVector;

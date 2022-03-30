@@ -7,6 +7,7 @@
 #include "Vector.h"
 
 class World;
+class Object;
 
 namespace RENDER{
     //Renderer handle for SDL2
@@ -18,10 +19,16 @@ namespace RENDER{
     extern FloatVector Camera;
 
     //This tells how many chunks are rendered around the camera
-    const int Render_Distance = 5; 
+    extern int Render_Distance;
+    extern int Max_Render_Distance;
+    extern int Min_Render_Distance;
 
     //This tells how many tiles is fitted to a single row
-    const int FOV = 100;
+    extern int FOV;
+    extern int Max_FOV;
+    extern int Min_FOV;
+
+    extern Object* Follow;
 
     const bool Full_Screen = false;
 

@@ -8,13 +8,28 @@
 #include "Vector.h"
 #include "Chunk.h"
 #include "TerGen.h"
+#include "Object.h"
+
+#include "Chaos/Include.h"
 
 SDL_Renderer* RENDER::Renderer;
 SDL_Window* RENDER::Window;
 int RENDER::Width;
 int RENDER::Height;
 
+//This tells how many chunks are rendered around the camera
+int RENDER::Render_Distance = 2;
+int RENDER::Max_Render_Distance = 10;
+int RENDER::Min_Render_Distance = 1;
+
+//This tells how many tiles is fitted to a single row
+int RENDER::FOV = 10;
+int RENDER::Max_FOV = 32;
+int RENDER::Min_FOV = 5;
+
 FloatVector RENDER::Camera;
+
+Object* RENDER::Follow;
 
 void RENDER::Start_Window(int width, int height){
     SDL_Init(SDL_INIT_VIDEO);
@@ -63,10 +78,16 @@ void RENDER::Render(World* world){
     for (int i = 0; i < All_Objects.size(); i++) {
         All_Objects[i]->Render();
     }
+
+    if (RENDER::Follow) {
+        Camera.X = RENDER::Follow->Position->X;
+        Camera.Y = RENDER::Follow->Position->Y;
+        Camera.Z = RENDER::Follow->Position->Z;
+    }
 }
 
 void RENDER::Update(World* world){
-    //Update all the objects in the world
+    Chaos_Update();
 }
 
 void RENDER::For_Each_Object_In_View(function<void(int, int)> lambda){
@@ -75,7 +96,7 @@ void RENDER::For_Each_Object_In_View(function<void(int, int)> lambda){
     int Top = (int)Camera.Y / CHUNK_SIZE * CHUNK_SIZE;
 
     //Calculate how many chunksare there to render in next to the center Chunk
-    int Surrounding_Chunks_Count = RENDER::FOV / CHUNK_SIZE + Render_Distance;
+    int Surrounding_Chunks_Count = RENDER::FOV / CHUNK_SIZE + Render_Distance + 1;
 
     for (int x = Left - Surrounding_Chunks_Count * CHUNK_SIZE; x <= Left + Surrounding_Chunks_Count * CHUNK_SIZE; x += CHUNK_SIZE) {
         for (int y = Top - Surrounding_Chunks_Count * CHUNK_SIZE; y <= Top + Surrounding_Chunks_Count * CHUNK_SIZE; y += CHUNK_SIZE) {
