@@ -18,12 +18,12 @@ int RENDER::Width;
 int RENDER::Height;
 
 //This tells how many chunks are rendered around the camera
-int RENDER::Render_Distance = 2;
+int RENDER::Render_Distance = 1;
 int RENDER::Max_Render_Distance = 10;
 int RENDER::Min_Render_Distance = 1;
 
 //This tells how many tiles is fitted to a single row
-int RENDER::FOV = 10;
+int RENDER::FOV = 5;
 int RENDER::Max_FOV = 32;
 int RENDER::Min_FOV = 5;
 
@@ -98,8 +98,8 @@ void RENDER::For_Each_Object_In_View(function<void(int, int)> lambda){
     //Calculate how many chunksare there to render in next to the center Chunk
     int Surrounding_Chunks_Count = RENDER::FOV / CHUNK_SIZE + Render_Distance + 1;
 
-    for (int x = Left - Surrounding_Chunks_Count * CHUNK_SIZE; x <= Left + Surrounding_Chunks_Count * CHUNK_SIZE; x += CHUNK_SIZE) {
-        for (int y = Top - Surrounding_Chunks_Count * CHUNK_SIZE; y <= Top + Surrounding_Chunks_Count * CHUNK_SIZE; y += CHUNK_SIZE) {
+    for (int x = Left - Surrounding_Chunks_Count * CHUNK_SIZE; x <= Left + (Surrounding_Chunks_Count + 1) * CHUNK_SIZE; x += CHUNK_SIZE) {
+        for (int y = Top - Surrounding_Chunks_Count * CHUNK_SIZE; y <= Top + (Surrounding_Chunks_Count + 1) * CHUNK_SIZE; y += CHUNK_SIZE) {
             lambda(x, y);
         }
     }

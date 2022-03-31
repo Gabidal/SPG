@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     SDL_Event event;
 
     //Start the window
-    RENDER::Start_Window(800, 600);
+    RENDER::Start_Window(1920, 1080);
 
     //Create the world
     World* world = new World();
@@ -40,9 +40,9 @@ int main(int argc, char** argv)
     Generate_Terrain(world);
 
     Entities_Init();
-    Chaos_Init(0.001);
+    Chaos_Init(0.1);
 
-
+    Entity* last;
 
     for (int i = 0; i < 100; i++) {
         FloatVector location = {
@@ -54,9 +54,11 @@ int main(int argc, char** argv)
         Entity* ent = new Entity(location, type);
 
         world->Add_Object(ent);
+
+        last = ent;
     }
 
-    //RENDER::Follow = ent;
+    RENDER::Follow = last;
 
     SDL_Texture* Render_Buffer = SDL_CreateTexture(RENDER::Renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, RENDER::Width, RENDER::Height);
 

@@ -58,8 +58,8 @@ void World::Add_Object(Object* object) {
 
 string World::Get_Chunk_Key(float x, float y) {
 	//Normalise the tile coordinates to the chunks top left corner
-	int X = x - ((int)x % CHUNK_SIZE);
-	int Y = y - ((int)y % CHUNK_SIZE);
+	int X = x - ((int)(x + CHUNK_SIZE) % CHUNK_SIZE);
+	int Y = y - ((int)(y + CHUNK_SIZE) % CHUNK_SIZE);
 
 	/*int X = x / CHUNK_SIZE;
 	int Y = y / CHUNK_SIZE;*/

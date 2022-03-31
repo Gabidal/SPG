@@ -9,8 +9,8 @@ vector<Entity_Template> Entities;
 void Entities_Init() {
 	Entities = {
 		//{Entity_Type::HUMAN, "./IMAGES/Player.png", 1},
-		{Entity_Type::CRAB, "Crab.png", 1, 1, 1},
-		{Entity_Type::KING_CRAB, "King_Crab.png", 10, 1, 1},
+		{Entity_Type::CRAB, "Crab.png", 1, 5, 1, 1},
+		{Entity_Type::KING_CRAB, "King_Crab.png", 5, 10, 1, 1},
 	};
 }
 
@@ -31,7 +31,7 @@ Entity::Entity(FloatVector Location, Entity_Type name) : Object(OBJECT_TYPES::EN
 
 	Position->Z = 1;
 
-	Handle = Get_New_Handle((Vector*)Position, Template->Power);
+	Handle = Get_New_Handle((Vector*)Position, Template->Min_Power + rand() % (int)(Template->Max_Power - Template->Min_Power));
 	Name = name;
 
 	Image = Template->Image;
@@ -46,11 +46,12 @@ void Entity::Render()
 	SDL_RenderCopy(RENDER::Renderer, Image->Texture, NULL, &tmp);
 }
 
-Entity_Template::Entity_Template(Entity_Type name, string image, float power, float width, float height)
+Entity_Template::Entity_Template(Entity_Type name, string image, float minpower, float maxpower, float width, float height)
 {
 	Name = name;
 	Image = File_Loader::Load_File(image);
-	Power = power;
+	Min_Power = minpower;
+	Max_Power = maxpower;
 	Width = width;
 	Height = height;
 }

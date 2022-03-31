@@ -33,11 +33,12 @@ class Entity_Template {
 public:
 	Entity_Type Name;
 	class File* Image;
-	float Power;
+	float Min_Power;
+	float Max_Power;
 	float Width;
 	float Height;
 
-	Entity_Template(Entity_Type name, string image, float power, float width, float height);
+	Entity_Template(Entity_Type name, string image, float minpower, float maxpower, float width, float height);
 };
 
 extern vector<Entity_Template> Entities;
