@@ -26,7 +26,9 @@ void KEY_LISTENER::Listen_For_Key_Presses(float delta) {
     }
 
     RENDER::Camera = RENDER::Camera.Add(Direction.Normalize().Scale(delta));
-    RENDER::Follow->Position = new FloatVector(RENDER::Follow->Position->Add(Direction.Normalize().Scale(delta)));
+
+    if (RENDER::Follow)
+        RENDER::Follow->Position = new FloatVector(RENDER::Follow->Position->Add(Direction.Normalize().Scale(delta)));
 }
 
 void KEY_LISTENER::Listen_For_Mouse(float delta)

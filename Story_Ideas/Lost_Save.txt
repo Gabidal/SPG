@@ -1,0 +1,2 @@
+The idea is that the original save world data was lost and the world hase gone to a drift state, and you the player as the new player explore the world that is in chaos.
+Make the world to order again or destroy whats left. The NPC dont know that you are a player they think that you are also a NPC.

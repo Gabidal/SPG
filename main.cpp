@@ -40,7 +40,7 @@ int main(int argc, char** argv)
     Generate_Terrain(world);
 
     Entities_Init();
-    Chaos_Init(0.1);
+    Chaos_Init(0.01);
 
     Entity* last;
 
@@ -58,7 +58,7 @@ int main(int argc, char** argv)
         last = ent;
     }
 
-    RENDER::Follow = last;
+    //RENDER::Follow = last;
 
     SDL_Texture* Render_Buffer = SDL_CreateTexture(RENDER::Renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, RENDER::Width, RENDER::Height);
 

@@ -3,12 +3,12 @@
 
 class Pattern;
 
-extern void Rock_Generator(Pattern* p);
+extern unsigned char Rock_Generator(Pattern* p, int Amount);
 
-extern void Tree_Generator(Pattern* p);
+extern unsigned char Tree_Generator(Pattern* p, int Amount);
 
-extern void Rikka_Generator(Pattern* p);
+extern unsigned char Rikka_Generator(Pattern* p, int Amount);
 
-extern void Cactus_Generator(Pattern* p);
+extern unsigned char Cactus_Generator(Pattern* p, int Amount);
 
 #endif

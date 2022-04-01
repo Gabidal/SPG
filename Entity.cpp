@@ -9,9 +9,17 @@ vector<Entity_Template> Entities;
 void Entities_Init() {
 	Entities = {
 		//{Entity_Type::HUMAN, "./IMAGES/Player.png", 1},
-		{Entity_Type::CRAB, "Crab.png", 1, 5, 1, 1},
-		{Entity_Type::KING_CRAB, "King_Crab.png", 5, 10, 1, 1},
+		{Entity_Type::CRAB, "Crab.png", 1, 2, 1, 1},
+		{Entity_Type::KING_CRAB, "King_Crab.png", 2, 4, 1, 1},
 	};
+}
+
+float Rand() {
+	return (float)rand() / RAND_MAX;
+}
+
+float Rand(float Min, float Max) {
+	return Min + Rand() * (Max - Min);
 }
 
 Entity_Template* Get_Entity_Template(Entity_Type type) {
@@ -31,7 +39,7 @@ Entity::Entity(FloatVector Location, Entity_Type name) : Object(OBJECT_TYPES::EN
 
 	Position->Z = 1;
 
-	Handle = Get_New_Handle((Vector*)Position, Template->Min_Power + rand() % (int)(Template->Max_Power - Template->Min_Power));
+	Handle = Get_New_Handle((Vector*)Position, Rand(Template->Min_Power, Template->Max_Power));
 	Name = name;
 
 	Image = Template->Image;

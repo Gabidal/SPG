@@ -5,8 +5,6 @@
 #include <string>
 #include <functional>
 
-
-
 class Node {
 public:
     float Y;
@@ -19,7 +17,7 @@ public:
 };
 
 class Pattern;
-typedef void (*FUNCTION)(Pattern*);
+typedef unsigned char (*FUNCTION)(Pattern*, int Amount);
 
 class Packet {
 public:
@@ -59,7 +57,7 @@ public:
 //-res [how much points shall there be?]
 //Note the default chunk size is 16x16
 [[nodiscard]]
-extern std::vector<Node*> TerGen(std::string args, std::vector<Packet> functions);
+extern std::vector<Node*> TerGen(std::string args, std::vector<Packet> Packets);
 
 class TerGen_Chunk;
 class Node;

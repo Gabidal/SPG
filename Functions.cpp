@@ -3,39 +3,65 @@
 #include "Chunk.h"
 
 constexpr int AIR_FREQUENCY = 10;
+constexpr int INTEGRATION_FREQUENCY = AIR_FREQUENCY / 5;
 
-void Rock_Generator(Pattern* p) {
-	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
+unsigned char Rock_Generator(Pattern* p, int Amount) {
+	for (int i = 0; i < Amount * Amount; i++) {
 		if (rand() % AIR_FREQUENCY == 1) {
 			p->Nodes[i].Y = 1;
 			p->Nodes[i].Color = p->Color;
+
 		}
 	}
+
+	if (rand() % INTEGRATION_FREQUENCY == 1) {
+		return p->Color;
+	}
+
+	return 0;
 }
 
-void Tree_Generator(Pattern* p) {
-	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
+unsigned char  Tree_Generator(Pattern* p, int Amount) {
+	for (int i = 0; i < Amount * Amount; i++) {
 		if (rand() % AIR_FREQUENCY == 1) {
 			p->Nodes[i].Y = 1;
 			p->Nodes[i].Color = p->Color;
 		}
 	}
+
+	if (rand() % INTEGRATION_FREQUENCY == 1) {
+		return p->Color;
+	}
+
+	return 0;
 }
 
-void Rikka_Generator(Pattern* p) {
-	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
+unsigned char  Rikka_Generator(Pattern* p, int Amount) {
+	for (int i = 0; i < Amount * Amount; i++) {
 		if (rand() % AIR_FREQUENCY == 1) {
 			p->Nodes[i].Y = 1;
 			p->Nodes[i].Color = p->Color;
 		}
 	}
+
+	if (rand() % INTEGRATION_FREQUENCY == 1) {
+		return p->Color;
+	}
+
+	return 0;
 }
 
-void Cactus_Generator(Pattern* p) {
-	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
+unsigned char  Cactus_Generator(Pattern* p, int Amount) {
+	for (int i = 0; i < Amount * Amount; i++) {
 		if (rand() % AIR_FREQUENCY == 1) {
 			p->Nodes[i].Y = 1;
 			p->Nodes[i].Color = p->Color;
 		}
 	}
+
+	if (rand() % INTEGRATION_FREQUENCY == 1) {
+		return p->Color;
+	}
+
+	return 0;
 }
