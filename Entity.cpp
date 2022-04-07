@@ -6,20 +6,26 @@
 
 vector<Entity_Template> Entities;
 
-void Entities_Init() {
-	Entities = {
-		//{Entity_Type::HUMAN, "./IMAGES/Player.png", 1},
-		{Entity_Type::CRAB, "Crab.png", 1, 2, 1, 1},
-		{Entity_Type::KING_CRAB, "King_Crab.png", 2, 4, 1, 1},
-	};
-}
-
 float Rand() {
 	return (float)rand() / RAND_MAX;
 }
 
 float Rand(float Min, float Max) {
 	return Min + Rand() * (Max - Min);
+}
+
+constexpr double STUPIDITY = 0.005;
+
+void Stupid(Object* This) {
+	*This->Position = This->Position->Add(FloatVector({ Rand(-STUPIDITY, STUPIDITY), Rand(-STUPIDITY, STUPIDITY) }).Normalize().Multiply(STUPIDITY));
+}
+
+void Entities_Init() {
+	Entities = {
+		//{Entity_Type::HUMAN, "./IMAGES/Player.png", 1},
+		{Entity_Type::CRAB, "Crab.png", 1, 10, 1, 1, Stupid},
+		{Entity_Type::KING_CRAB, "King_Crab.png", 10, 20, 1, 1, Stupid},
+	};
 }
 
 Entity_Template* Get_Entity_Template(Entity_Type type) {
@@ -36,6 +42,8 @@ Entity::Entity(FloatVector Location, Entity_Type name) : Object(OBJECT_TYPES::EN
 	Entity_Template* Template = Get_Entity_Template(name);
 
 	Position = new FloatVector(Location);
+
+	Update = Template->Update;
 
 	Position->Z = 1;
 
@@ -54,12 +62,20 @@ void Entity::Render()
 	SDL_RenderCopy(RENDER::Renderer, Image->Texture, NULL, &tmp);
 }
 
-Entity_Template::Entity_Template(Entity_Type name, string image, float minpower, float maxpower, float width, float height)
-{
+Entity_Template::Entity_Template(
+	Entity_Type name, 
+	string image, 
+	float minpower, 
+	float maxpower, 
+	float width, 
+	float height,
+	void (*update)(Object*)
+){
 	Name = name;
 	Image = File_Loader::Load_File(image);
 	Min_Power = minpower;
 	Max_Power = maxpower;
 	Width = width;
 	Height = height;
+	Update = update;
 }

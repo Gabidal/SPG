@@ -61,6 +61,9 @@ void RENDER::Render(World* world){
 
     //Sort the objects by their Z coordinate
     sort(All_Objects.begin(), All_Objects.end(), [](Object* a, Object* b) {
+        if (a == nullptr || b == nullptr) {
+            int a = 0;
+        }
         if (a->Position->Z != b->Position->Z)
             return a->Position->Z < b->Position->Z;
 
@@ -88,6 +91,12 @@ void RENDER::Render(World* world){
 
 void RENDER::Update(World* world){
     Chaos_Update();
+
+    for (auto i : world->Chunks) {
+        for (auto j : i.second->Objects) {
+            j->Update(j);
+        }
+    }
 }
 
 void RENDER::For_Each_Object_In_View(function<void(int, int)> lambda){

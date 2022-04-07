@@ -38,7 +38,9 @@ public:
 	float Width;
 	float Height;
 
-	Entity_Template(Entity_Type name, string image, float minpower, float maxpower, float width, float height);
+	void (*Update)(Object*);
+
+	Entity_Template(Entity_Type name, string image, float minpower, float maxpower, float width, float height, void (*update)(Object*));
 };
 
 extern vector<Entity_Template> Entities;

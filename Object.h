@@ -26,7 +26,8 @@ public:
 	virtual void Render() {}
 
 	//This function is used to update the object
-	virtual void Update() {}
+	//virtual void Update() {}
+	void (*Update)(Object*);
 
 	SDL_Rect Compute_SDL_Rect();
 };

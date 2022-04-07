@@ -15,14 +15,18 @@ SDL_Rect Object::Compute_SDL_Rect()
 	};
 }
 
+void NULLPTR(Object*) {}
+
 Object::Object(OBJECT_TYPES type) {
 	Type = type;
 	Position = new FloatVector(0, 0);
 	Velocity = new FloatVector(0, 0);
+	Update = NULLPTR;
 }
 
 Object::Object(OBJECT_TYPES type, float x, float y, float z) {
 	Type = type;
 	Position = new FloatVector(x, y, z);
 	Velocity = new FloatVector(0, 0);
+	Update = NULLPTR;
 }

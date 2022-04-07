@@ -110,6 +110,11 @@ public:
         return FloatVector(X * v.X, Y * v.Y, Z * v.Z);
     }
 
+    //This function multiplies.
+    FloatVector Multiply(float v) {
+        return FloatVector(X * v, Y * v, Z * v);
+    }
+
     //This function divides two vectors.
     FloatVector Divide(FloatVector v) {
         return FloatVector(X / v.X, Y / v.Y, Z / v.Z);

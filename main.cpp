@@ -15,7 +15,7 @@
 #include "Chunk.h"
 
 #include "TerGen.h"
-#include "Chaos/Include.h"
+#include "Chaos.h"
 
 extern FloatVector RENDER::Camera;
 
@@ -39,8 +39,7 @@ int main(int argc, char** argv)
 
     Generate_Terrain(world);
 
-    Entities_Init();
-    Chaos_Init(0.01);
+    Init_Chaos();
 
     Entity* last;
 
