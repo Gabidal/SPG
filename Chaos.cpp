@@ -46,5 +46,5 @@ void Init_Chaos()
 		{STATE::SAME_RADIUS, Too_Close},
 
 		{STATE::CLOSE, Close},
-	}, 0.025);
+	}, 0.01);
 }

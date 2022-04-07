@@ -39,7 +39,7 @@ namespace RENDER{
     void Render(World* world);
 
     //This function updates all the objects in the world
-    void Update(World* world);
+    void Update(World* world, unsigned long long Delta);
 
     //Utils
 

@@ -9,7 +9,12 @@ using namespace std;
 
 namespace TILE_IMAGES{
     const string AIR = "Air.png";
-    const string GRASS = "SwampGrass.png";
+    const string COBBLESTONE = "Cobblestone.png";
+    const string OCEAN = "Ocean.png";
+    const string GRASS = "Grass.png";
+    const string SWAMP = "SwampGrass.png";
+    const string DARK_GRASS = "GrassBG.png";
+    const string SMOOTH_STONE = "Smooth Stone.png";
     const string ROCK = "Rock.png";
     const string BIRCH = "Birch.png";
     const string OAK = "Oak.png";
@@ -19,13 +24,23 @@ namespace TILE_IMAGES{
 
 enum class TILE_TYPES{
     AIR,
-    GRASS,
+    BG,
     ROCK,
     TREE,
     RIKKA,
     CACTUS,
     CRAB,
     COUNT
+};
+
+enum class BG_TYPES {
+    OCEAN,
+    GRASS,
+    COBBLESTONE,
+    SMOOTH_STONE,
+    SWAMP,
+    DARK_GRASS,
+    COUNT,
 };
 
 enum class TREE_TYPES {

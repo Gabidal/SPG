@@ -46,7 +46,8 @@ void RENDER::Render(World* world){
     //Gather all the objects in all the surrounding chunks
     vector<Object*> All_Objects;
 
-    Generate_Background_Tiles(world);
+    int Average_Elevation = 0;
+    int Count = 0;
 
     For_Each_Object_In_View([&](int x, int y){
         Chunk* chunk = world->Get_Chunk(Chunk_Coordinates{x, y});
@@ -55,9 +56,18 @@ void RENDER::Render(World* world){
             All_Objects.resize(All_Objects.size() + chunk->Objects.size());
             for (int i = 0; i < chunk->Objects.size(); i++) {
                 All_Objects[Previus_All_Objects_Size + i] = chunk->Objects[i];
+
+                if (i % 2 == 0 && chunk->Objects[i]->Type == OBJECT_TYPES::TILE) {
+                    Average_Elevation += chunk->Objects[i]->Position->Z;
+                    Count++;
+                }
             }
         }
     });
+
+    Average_Elevation /= (Count / 100);
+
+    Generate_Background_Tiles(Average_Elevation, world, All_Objects);
 
     //Sort the objects by their Z coordinate
     sort(All_Objects.begin(), All_Objects.end(), [](Object* a, Object* b) {
@@ -89,12 +99,12 @@ void RENDER::Render(World* world){
     }
 }
 
-void RENDER::Update(World* world){
+void RENDER::Update(World* world, unsigned long long Delta){
     Chaos_Update();
 
     for (auto i : world->Chunks) {
         for (auto j : i.second->Objects) {
-            j->Update(j);
+            j->Update(j, Delta);
         }
     }
 }

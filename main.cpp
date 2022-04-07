@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 
     Entity* last;
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < CHUNK_SIZE * CHUNK_AMOUNT_SQRT; i++) {
         FloatVector location = {
             (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
             (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
@@ -61,7 +61,8 @@ int main(int argc, char** argv)
 
     SDL_Texture* Render_Buffer = SDL_CreateTexture(RENDER::Renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, RENDER::Width, RENDER::Height);
 
-    auto Previus = chrono::high_resolution_clock::now();
+    auto Start = chrono::high_resolution_clock::now();
+    auto Previus = Start;
     while (!quit)
     {
         auto Now = chrono::high_resolution_clock::now();
@@ -70,7 +71,7 @@ int main(int argc, char** argv)
 
         Previus = Now;
 
-        RENDER::Update(world);
+        RENDER::Update(world, chrono::duration_cast<chrono::milliseconds>(Now - Start).count());
 
         SDL_SetRenderTarget(RENDER::Renderer, Render_Buffer);
         SDL_SetRenderDrawColor(RENDER::Renderer, 0, 0, 0, 255);

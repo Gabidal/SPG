@@ -105,6 +105,11 @@ public:
         return FloatVector(X - v.X, Y - v.Y, Z - v.Z);
     }
 
+    //This function subtracts.
+    FloatVector Subtract(float v) {
+        return FloatVector(X - v, Y - v, Z - v);
+    }
+
     //This function multiplies two vectors.
     FloatVector Multiply(FloatVector v) {
         return FloatVector(X * v.X, Y * v.Y, Z * v.Z);

@@ -64,34 +64,35 @@ Object* Get_Right_Object(Node* node, int x, int y) {
 	return Result;
 }
 
-void Seed_Terrain(World* world)
-{
-	for (int c_x = 0; c_x < CHUNK_AMOUNT_SQRT; c_x++) {
-		for (int c_y = 0; c_y < CHUNK_AMOUNT_SQRT; c_y++) {
-			int Chunk_Index = (CHUNK_AMOUNT_SQRT * c_x + c_y) * CHUNK_SIZE * CHUNK_SIZE;
-
-			for (int x = 0; x < CHUNK_SIZE; x++) {
-				for (int y = 0; y < CHUNK_SIZE; y++) {
-					int Node_index = CHUNK_SIZE * x + y;
-
-					//The Y in TerGen is same as our Z axis
-					//Set the x & y based on the forloop x & y values
-					Tile* tile = new Tile(TILE_IMAGES::GRASS,
-						1, 1,
-						(float)x + c_x * CHUNK_SIZE,
-						(float)y + c_y * CHUNK_SIZE,
-						(float)0
-					);
-
-					world->Add_Object(tile);
-				}
-			}
-
-		}
+string Get_BG_Tile_Name(BG_TYPES bg) {
+	if (bg == BG_TYPES::OCEAN) {
+		return TILE_IMAGES::OCEAN;
+	}
+	else if (bg == BG_TYPES::GRASS) {
+		return TILE_IMAGES::GRASS;
+	}
+	else if(bg == BG_TYPES::COBBLESTONE) {
+		return TILE_IMAGES::COBBLESTONE;
+	}
+	else if (bg == BG_TYPES::SMOOTH_STONE) {
+		return TILE_IMAGES::SMOOTH_STONE;
+	}
+	else if (bg == BG_TYPES::SWAMP) {
+		return TILE_IMAGES::SWAMP;
+	}
+	else if (bg == BG_TYPES::DARK_GRASS) {
+		return TILE_IMAGES::DARK_GRASS;
+	}
+	else {
+		return "";
 	}
 }
 
-void Generate_Background_Tiles(World* world) {
+void Generate_Background_Tiles(float Elevation, World* world, vector<Object*> &All_Objects) {
+	BG_TYPES BackGround_type = (BG_TYPES)((int)(Elevation) % (int)BG_TYPES::COUNT);
+	
+	string Bg_Name = Get_BG_Tile_Name(BackGround_type);
+
 	RENDER::For_Each_Object_In_View(
 		[&](int X, int Y) {
 
@@ -105,7 +106,7 @@ void Generate_Background_Tiles(World* world) {
 				//now we need to fill this chunk with background tiles
 				for (int x = 0; x < CHUNK_SIZE; x++) {
 					for (int y = 0; y < CHUNK_SIZE; y++) {
-						Tile* tile = new Tile(TILE_IMAGES::GRASS,
+						Tile* tile = new Tile(Bg_Name,
 							1, 1,
 							(float)x + X,
 							(float)y + Y,
@@ -113,6 +114,7 @@ void Generate_Background_Tiles(World* world) {
 						);
 
 						world->Add_Object(tile);
+						All_Objects.push_back(tile);
 					}
 				}
 			}

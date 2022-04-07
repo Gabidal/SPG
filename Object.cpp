@@ -15,7 +15,7 @@ SDL_Rect Object::Compute_SDL_Rect()
 	};
 }
 
-void NULLPTR(Object*) {}
+void NULLPTR(Object*, unsigned long long) {}
 
 Object::Object(OBJECT_TYPES type) {
 	Type = type;

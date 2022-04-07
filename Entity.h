@@ -24,6 +24,8 @@ public:
 	Chaos_Handle* Handle;
 	class File* Image;
 
+	int Interval = 1;
+
 	Entity(FloatVector Location, Entity_Type name);
 
 	virtual void Render() override;
@@ -38,9 +40,9 @@ public:
 	float Width;
 	float Height;
 
-	void (*Update)(Object*);
+	void (*Update)(Object*, unsigned long long);
 
-	Entity_Template(Entity_Type name, string image, float minpower, float maxpower, float width, float height, void (*update)(Object*));
+	Entity_Template(Entity_Type name, string image, float minpower, float maxpower, float width, float height, void (*update)(Object*, unsigned long long));
 };
 
 extern vector<Entity_Template> Entities;

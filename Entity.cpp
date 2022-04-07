@@ -14,17 +14,29 @@ float Rand(float Min, float Max) {
 	return Min + Rand() * (Max - Min);
 }
 
-constexpr double STUPIDITY = 0.005;
+constexpr double Distance = 10;
+constexpr double Transfer_Speed = 0.01;
 
-void Stupid(Object* This) {
-	*This->Position = This->Position->Add(FloatVector({ Rand(-STUPIDITY, STUPIDITY), Rand(-STUPIDITY, STUPIDITY) }).Normalize().Multiply(STUPIDITY));
+void Dum(Object* This, unsigned long long Delta) {
+	if (Delta % ((Entity*)This)->Interval < 100) {
+		((Entity*)This)->Interval = Rand(100, 10000);
+
+		This->Velocity = new FloatVector(Rand(-Distance, Distance), Rand(-Distance, Distance));
+	}
+
+	float Velocity_Speed = sqrt(This->Velocity->X * This->Velocity->X + This->Velocity->Y * This->Velocity->Y);
+
+	if (abs(Velocity_Speed - Transfer_Speed) > 1) {
+		*This->Position = This->Position->Add(This->Velocity->Normalize().Multiply(Transfer_Speed));
+		This->Velocity->Subtract(Transfer_Speed);
+	}
 }
 
 void Entities_Init() {
 	Entities = {
 		//{Entity_Type::HUMAN, "./IMAGES/Player.png", 1},
-		{Entity_Type::CRAB, "Crab.png", 1, 10, 1, 1, Stupid},
-		{Entity_Type::KING_CRAB, "King_Crab.png", 10, 20, 1, 1, Stupid},
+		{Entity_Type::CRAB, "Crab.png", 1, 10, 1, 1, Dum},
+		{Entity_Type::KING_CRAB, "King_Crab.png", 10, 20, 1, 1, Dum},
 	};
 }
 
@@ -69,7 +81,7 @@ Entity_Template::Entity_Template(
 	float maxpower, 
 	float width, 
 	float height,
-	void (*update)(Object*)
+	void (*update)(Object*, unsigned long long)
 ){
 	Name = name;
 	Image = File_Loader::Load_File(image);

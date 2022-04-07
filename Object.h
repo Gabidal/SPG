@@ -27,7 +27,7 @@ public:
 
 	//This function is used to update the object
 	//virtual void Update() {}
-	void (*Update)(Object*);
+	void (*Update)(Object*, unsigned long long Delta);
 
 	SDL_Rect Compute_SDL_Rect();
 };
