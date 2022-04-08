@@ -9,11 +9,15 @@ class Node {
 public:
     float Y;
     unsigned char Color;
+    short Moisture;
+    short Tempature;
 
-    /*Node(float y = 0, char c = 0) {
+    Node(float y = 0, unsigned char c = 0, short moisture = 0, short tempature = 0) {
         Y = y;
         Color = c;
-    }*/
+        Moisture = moisture;
+        Tempature = tempature;
+    }
 };
 
 class Pattern;
@@ -57,10 +61,16 @@ public:
 //-res [how much points shall there be?]
 //Note the default chunk size is 16x16
 [[nodiscard]]
-extern std::vector<Node*> TerGen(std::string args, std::vector<Packet> Packets);
+extern std::vector<Node*> TerGen(
+    std::string args,
+    std::vector<Packet> Packets,
+    float Frequenzy,
+    float Amplitude,
+    float Lacuranity,
+    float Persictent
+);
 
 class TerGen_Chunk;
-class Node;
 
 class TerGen_Chunk_Coordinates {
 public:

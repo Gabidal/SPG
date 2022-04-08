@@ -35,11 +35,11 @@ enum class TILE_TYPES{
 
 enum class BG_TYPES {
     OCEAN,
+    SWAMP,
+    DARK_GRASS,
     GRASS,
     COBBLESTONE,
     SMOOTH_STONE,
-    SWAMP,
-    DARK_GRASS,
     COUNT,
 };
 

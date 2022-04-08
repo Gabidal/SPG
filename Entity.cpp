@@ -4,6 +4,8 @@
 
 #include "Render.h"
 
+#include "Tile.h"
+
 vector<Entity_Template> Entities;
 
 float Rand() {
@@ -57,7 +59,7 @@ Entity::Entity(FloatVector Location, Entity_Type name) : Object(OBJECT_TYPES::EN
 
 	Update = Template->Update;
 
-	Position->Z = 1;
+	Position->Z = (int)BG_TYPES::COUNT;
 
 	Handle = Get_New_Handle((Vector*)Position, Rand(Template->Min_Power, Template->Max_Power));
 	Name = name;

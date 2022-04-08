@@ -22,7 +22,7 @@ void Generate_Terrain(World* world) {
 		{Rock_Generator, 0.0},
 		{Tree_Generator, 0.3},
 		{Cactus_Generator, 0.3}
-	});
+	}, 0.01, 1, 2, 0.001);
 
 	if (Nodes.size() == 0) {
 		throw::exception("TerGen returned list size of 0!?");
@@ -31,10 +31,27 @@ void Generate_Terrain(World* world) {
 	UTILS::For_All_Nodes(Nodes, [world](Node* node, double x, double y, double Chunk_X, double Chunk_Y) {
 		//The Y in TerGen is same as our Z axis
 		//Set the x & y based on the forloop x & y values
+		world->Add_Object(Get_Right_BG_Tile(node, Chunk_X + x, Chunk_Y + y));
 		world->Add_Object(Get_Right_Object(node, Chunk_X + x, Chunk_Y + y));
 	});
 
 	return;
+}
+
+Object* Get_Right_BG_Tile(Node* node, int x, int y) {
+	BG_TYPES BackGround_type = (BG_TYPES)((int)(abs(node->Y) * (int)BG_TYPES::COUNT) % (int)BG_TYPES::COUNT);
+
+	string Bg_Name = Get_BG_Tile_Name(BackGround_type);
+
+	Tile* Result = new Tile(
+		Bg_Name,
+		1,
+		1,
+		x, y,
+		node->Y
+	);
+
+	return Result;
 }
 
 Object* Get_Right_Object(Node* node, int x, int y) {
@@ -58,7 +75,7 @@ Object* Get_Right_Object(Node* node, int x, int y) {
 		Size,
 		Size,
 		x, y,
-		node->Y
+		(abs(node->Y)) + (int)BG_TYPES::COUNT
 	);
 
 	return Result;

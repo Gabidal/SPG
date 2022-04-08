@@ -36,7 +36,7 @@ void RENDER::Start_Window(int width, int height){
 
     Window = SDL_CreateWindow("SPG", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
     
-    Renderer = SDL_CreateRenderer(RENDER::Window, -1, 0);
+    Renderer = SDL_CreateRenderer(RENDER::Window, -1, SDL_RENDERER_PRESENTVSYNC);
 
     RENDER::Height = height;
     RENDER::Width = width;
@@ -67,7 +67,7 @@ void RENDER::Render(World* world){
 
     Average_Elevation /= (Count / 100);
 
-    Generate_Background_Tiles(Average_Elevation, world, All_Objects);
+    //Generate_Background_Tiles(Average_Elevation, world, All_Objects);
 
     //Sort the objects by their Z coordinate
     sort(All_Objects.begin(), All_Objects.end(), [](Object* a, Object* b) {
