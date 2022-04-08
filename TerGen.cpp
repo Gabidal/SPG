@@ -19,9 +19,8 @@ void Generate_Terrain(World* world) {
 
 	vector<Node*> Nodes = TerGen(Arguments, {
 		{Rikka_Generator, 1},
-		{Rock_Generator, 0.0},
+		{Rock_Generator, 0.1},
 		{Tree_Generator, 0.3},
-		{Cactus_Generator, 0.3}
 	}, 0.01, 1, 2, 0.001);
 
 	if (Nodes.size() == 0) {
@@ -39,9 +38,10 @@ void Generate_Terrain(World* world) {
 }
 
 Object* Get_Right_BG_Tile(Node* node, int x, int y) {
-	BG_TYPES BackGround_type = (BG_TYPES)((int)(abs(node->Y) * (int)BG_TYPES::COUNT) % (int)BG_TYPES::COUNT);
 
-	string Bg_Name = Get_BG_Tile_Name(BackGround_type);
+	BG_TYPES Offset_Y = Normalize_Y(node->Y);
+
+	string Bg_Name = Get_BG_Tile_Name(Offset_Y);
 
 	Tile* Result = new Tile(
 		Bg_Name,

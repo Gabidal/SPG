@@ -57,9 +57,21 @@ TILE_TYPES Get_Tile_Type(unsigned char color)
         return TILE_TYPES::TREE;
     else if (func == Rikka_Generator)
         return TILE_TYPES::RIKKA;
-    else if (func == Cactus_Generator)
-        return TILE_TYPES::CACTUS;
+    /*else if (func == Cactus_Generator)
+        return TILE_TYPES::CACTUS;*/
     else {
         return TILE_TYPES::AIR;
     }
+}
+
+BG_TYPES Normalize_Y(float Y) {
+    int Normalized_Y = (abs(Y) * (int)BG_TYPES::COUNT);
+
+    int Offset_Y = (Normalized_Y % (int)BG_TYPES::COUNT);
+
+    if (Offset_Y <= (int)BG_TYPES::START_OF_GENERATABLE_BG_TILES) {
+        Offset_Y += ((int)BG_TYPES::START_OF_GENERATABLE_BG_TILES) + 1;
+    }
+
+    return (BG_TYPES)Offset_Y;
 }

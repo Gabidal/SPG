@@ -35,6 +35,7 @@ enum class TILE_TYPES{
 
 enum class BG_TYPES {
     OCEAN,
+    START_OF_GENERATABLE_BG_TILES,
     SWAMP,
     DARK_GRASS,
     GRASS,
@@ -53,6 +54,8 @@ enum class TREE_TYPES {
 extern string Get_Tile_Image(TILE_TYPES name);
 
 extern TILE_TYPES Get_Tile_Type(unsigned char color);
+
+extern BG_TYPES Normalize_Y(float Y);
 
 class File;
 

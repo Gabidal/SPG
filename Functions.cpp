@@ -8,62 +8,67 @@
 constexpr int AIR_FREQUENCY = 10;
 constexpr int INTEGRATION_FREQUENCY = AIR_FREQUENCY / 5;
 
-unsigned char Rock_Generator(Pattern* p, int Amount) {
+unsigned char Rock_Generator(Pattern* p, int Amount, Node* node) {
 	for (int i = 0; i < Amount * Amount; i++) {
 		if (rand() % AIR_FREQUENCY == 1) {
-			p->Nodes[i].Y = CHAOS_UTILS::Rand(0, (int)BG_TYPES::COUNT - 1);
-			p->Nodes[i].Color = p->Color;
+			BG_TYPES Elevation = Normalize_Y(p->Nodes[i].Y);
 
+			if (Elevation == BG_TYPES::COBBLESTONE) {
+				p->Nodes[i].Color = p->Color;
+			}
 		}
 	}
 
-	if (rand() % INTEGRATION_FREQUENCY == 1) {
-		return p->Color;
+	if (node && rand() % INTEGRATION_FREQUENCY == 1) {
+		BG_TYPES Elevation = Normalize_Y(node->Y);
+
+		if (Elevation == BG_TYPES::COBBLESTONE) {
+			return p->Color;
+		}
 	}
 
 	return 0;
 }
 
-unsigned char  Tree_Generator(Pattern* p, int Amount) {
+unsigned char  Tree_Generator(Pattern* p, int Amount, Node* node) {
 	for (int i = 0; i < Amount * Amount; i++) {
 		if (rand() % AIR_FREQUENCY == 1) {
-			p->Nodes[i].Y = CHAOS_UTILS::Rand(0, (int)BG_TYPES::COUNT - 1);
-			p->Nodes[i].Color = p->Color;
+			BG_TYPES Elevation = Normalize_Y(p->Nodes[i].Y);
+
+			if (Elevation < BG_TYPES::COBBLESTONE) {
+				p->Nodes[i].Color = p->Color;
+			}
 		}
 	}
 
-	if (rand() % INTEGRATION_FREQUENCY == 1) {
-		return p->Color;
+	if (node && rand() % INTEGRATION_FREQUENCY == 1) {
+		BG_TYPES Elevation = Normalize_Y(node->Y);
+
+		if (Elevation == BG_TYPES::COBBLESTONE) {
+			return p->Color;
+		}
 	}
 
 	return 0;
 }
 
-unsigned char  Rikka_Generator(Pattern* p, int Amount) {
+unsigned char  Rikka_Generator(Pattern* p, int Amount, Node* node) {
 	for (int i = 0; i < Amount * Amount; i++) {
 		if (rand() % AIR_FREQUENCY == 1) {
-			p->Nodes[i].Y = CHAOS_UTILS::Rand(0, (int)BG_TYPES::COUNT - 1);
-			p->Nodes[i].Color = p->Color;
+			BG_TYPES Elevation = Normalize_Y(p->Nodes[i].Y);
+
+			if (Elevation == BG_TYPES::SMOOTH_STONE) {
+				p->Nodes[i].Color = p->Color;
+			}
 		}
 	}
 
-	if (rand() % INTEGRATION_FREQUENCY == 1) {
-		return p->Color;
-	}
+	if (node && rand() % INTEGRATION_FREQUENCY == 1) {
+		BG_TYPES Elevation = Normalize_Y(node->Y);
 
-	return 0;
-}
-
-unsigned char  Cactus_Generator(Pattern* p, int Amount) {
-	for (int i = 0; i < Amount * Amount; i++) {
-		if (rand() % AIR_FREQUENCY == 1) {
-			p->Nodes[i].Y = CHAOS_UTILS::Rand(0, (int)BG_TYPES::COUNT - 1);
-			p->Nodes[i].Color = p->Color;
+		if (Elevation == BG_TYPES::COBBLESTONE) {
+			return p->Color;
 		}
-	}
-
-	if (rand() % INTEGRATION_FREQUENCY == 1) {
-		return p->Color;
 	}
 
 	return 0;
