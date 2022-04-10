@@ -2,7 +2,7 @@
 #include "Vector.h"
 
 int CHUNK_SIZE = 16;
-int CHUNK_AMOUNT_SQRT = 10; //total amount is CHUNK_AMOUNT_SQRT^2
+int CHUNK_AMOUNT_SQRT = 20; //total amount is CHUNK_AMOUNT_SQRT^2
 
 Tile* Chunk::Get_Object(float x, float y) {
     //because SDL library doesnt have Z axis support we need to make

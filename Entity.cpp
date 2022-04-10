@@ -1,10 +1,8 @@
 #include "Entity.h"
-
 #include "File_Loader.h"
-
 #include "Render.h"
-
 #include "Tile.h"
+#include "TerGen/Include.h"
 
 vector<Entity_Template> Entities;
 
@@ -23,15 +21,13 @@ void Dum(Object* This, unsigned long long Delta) {
 	if (Delta % ((Entity*)This)->Interval < 100) {
 		((Entity*)This)->Interval = Rand(100, 10000);
 
+		//This acts like the objective
 		This->Velocity = new FloatVector(Rand(-Distance, Distance), Rand(-Distance, Distance));
 	}
 
 	float Velocity_Speed = sqrt(This->Velocity->X * This->Velocity->X + This->Velocity->Y * This->Velocity->Y);
 
-	if (abs(Velocity_Speed - Transfer_Speed) > 1) {
-		*This->Position = This->Position->Add(This->Velocity->Normalize().Multiply(Transfer_Speed));
-		This->Velocity->Subtract(Transfer_Speed);
-	}
+	*This->Position = This->Position->Add(This->Velocity->Normalize().Multiply(Transfer_Speed));
 }
 
 void Entities_Init() {

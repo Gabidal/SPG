@@ -41,9 +41,9 @@ int main(int argc, char** argv)
 
     Init_Chaos();
 
-    Entity* last;
+    Entity* last = nullptr;
 
-    for (int i = 0; i < CHUNK_SIZE * CHUNK_AMOUNT_SQRT; i++) {
+    for (int i = 0; i < CHUNK_SIZE; i++) {
         FloatVector location = {
             (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
             (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
@@ -72,6 +72,12 @@ int main(int argc, char** argv)
         Previus = Now;
 
         RENDER::Update(world, chrono::duration_cast<chrono::milliseconds>(Now - Start).count());
+
+        /*Now = chrono::high_resolution_clock::now();
+
+        auto Banana = chrono::duration_cast<chrono::milliseconds>(Now - Previus).count();
+
+        cout << Banana << endl;*/
 
         SDL_SetRenderTarget(RENDER::Renderer, Render_Buffer);
         SDL_SetRenderDrawColor(RENDER::Renderer, 0, 0, 0, 255);

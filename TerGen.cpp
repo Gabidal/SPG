@@ -2,6 +2,7 @@
 #include "Vector.h"
 #include "Chunk.h"
 #include "./TerGen/Include.h"
+#include "./Chaos/Include.h"
 #include "Render.h"
 #include "Tile.h"
 #include "Object.h"
@@ -19,9 +20,10 @@ void Generate_Terrain(World* world) {
 
 	vector<Node*> Nodes = TerGen(Arguments, {
 		{Rikka_Generator, 1},
-		{Rock_Generator, 0.1},
+		{Rock_Generator, 0.01},
 		{Tree_Generator, 0.3},
-	}, 0.01, 1, 2, 0.001);
+		{River_Generator, 1},
+	}, 0.001, 1, 4, 0.3, CHAOS_UTILS::Rand(-100, 100));
 
 	if (Nodes.size() == 0) {
 		throw::exception("TerGen returned list size of 0!?");
@@ -38,7 +40,6 @@ void Generate_Terrain(World* world) {
 }
 
 Object* Get_Right_BG_Tile(Node* node, int x, int y) {
-
 	BG_TYPES Offset_Y = Normalize_Y(node->Y);
 
 	string Bg_Name = Get_BG_Tile_Name(Offset_Y);
@@ -82,10 +83,7 @@ Object* Get_Right_Object(Node* node, int x, int y) {
 }
 
 string Get_BG_Tile_Name(BG_TYPES bg) {
-	if (bg == BG_TYPES::OCEAN) {
-		return TILE_IMAGES::OCEAN;
-	}
-	else if (bg == BG_TYPES::GRASS) {
+	if (bg == BG_TYPES::GRASS) {
 		return TILE_IMAGES::GRASS;
 	}
 	else if(bg == BG_TYPES::COBBLESTONE) {

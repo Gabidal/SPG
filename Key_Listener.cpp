@@ -8,7 +8,7 @@
 void KEY_LISTENER::Listen_For_Key_Presses(float delta) {
     auto Keyboard = SDL_GetKeyboardState(NULL);
 
-    delta *= 10;
+    delta *= 100;
 
     FloatVector Direction(0, 0);
 
@@ -28,7 +28,7 @@ void KEY_LISTENER::Listen_For_Key_Presses(float delta) {
     RENDER::Camera = RENDER::Camera.Add(Direction.Normalize().Scale(delta));
 
     if (RENDER::Follow)
-        RENDER::Follow->Position = new FloatVector(RENDER::Follow->Position->Add(Direction.Normalize().Scale(delta)));
+        *RENDER::Follow->Position = RENDER::Follow->Position->Add(Direction.Normalize().Scale(delta));
 }
 
 void KEY_LISTENER::Listen_For_Mouse(float delta)

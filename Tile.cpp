@@ -40,6 +40,8 @@ string Get_Tile_Image(TILE_TYPES name){
             return TILE_IMAGES::CACTUS;
         case TILE_TYPES::RIKKA:
             return TILE_IMAGES::RIKKA;
+        case TILE_TYPES::WATER:
+            return TILE_IMAGES::OCEAN;
         default: {
             
             return "";
@@ -57,8 +59,8 @@ TILE_TYPES Get_Tile_Type(unsigned char color)
         return TILE_TYPES::TREE;
     else if (func == Rikka_Generator)
         return TILE_TYPES::RIKKA;
-    /*else if (func == Cactus_Generator)
-        return TILE_TYPES::CACTUS;*/
+    else if (func == River_Generator)
+        return TILE_TYPES::WATER;
     else {
         return TILE_TYPES::AIR;
     }
@@ -69,9 +71,9 @@ BG_TYPES Normalize_Y(float Y) {
 
     int Offset_Y = (Normalized_Y % (int)BG_TYPES::COUNT);
 
-    if (Offset_Y <= (int)BG_TYPES::START_OF_GENERATABLE_BG_TILES) {
-        Offset_Y += ((int)BG_TYPES::START_OF_GENERATABLE_BG_TILES) + 1;
-    }
+    //if (Offset_Y <= (int)BG_TYPES::START_OF_GENERATABLE_BG_TILES) {
+    //    Offset_Y += ((int)BG_TYPES::START_OF_GENERATABLE_BG_TILES) + 1;
+    //}
 
     return (BG_TYPES)Offset_Y;
 }

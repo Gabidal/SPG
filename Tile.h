@@ -24,6 +24,7 @@ namespace TILE_IMAGES{
 
 enum class TILE_TYPES{
     AIR,
+    WATER,
     BG,
     ROCK,
     TREE,
@@ -34,8 +35,6 @@ enum class TILE_TYPES{
 };
 
 enum class BG_TYPES {
-    OCEAN,
-    START_OF_GENERATABLE_BG_TILES,
     SWAMP,
     DARK_GRASS,
     GRASS,

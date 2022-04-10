@@ -46,9 +46,6 @@ void RENDER::Render(World* world){
     //Gather all the objects in all the surrounding chunks
     vector<Object*> All_Objects;
 
-    int Average_Elevation = 0;
-    int Count = 0;
-
     For_Each_Object_In_View([&](int x, int y){
         Chunk* chunk = world->Get_Chunk(Chunk_Coordinates{x, y});
         if (chunk != nullptr) {
@@ -56,18 +53,9 @@ void RENDER::Render(World* world){
             All_Objects.resize(All_Objects.size() + chunk->Objects.size());
             for (int i = 0; i < chunk->Objects.size(); i++) {
                 All_Objects[Previus_All_Objects_Size + i] = chunk->Objects[i];
-
-                if (i % 2 == 0 && chunk->Objects[i]->Type == OBJECT_TYPES::TILE) {
-                    Average_Elevation += chunk->Objects[i]->Position->Z;
-                    Count++;
-                }
             }
         }
     });
-
-    Average_Elevation /= (Count / 100);
-
-    //Generate_Background_Tiles(Average_Elevation, world, All_Objects);
 
     //Sort the objects by their Z coordinate
     sort(All_Objects.begin(), All_Objects.end(), [](Object* a, Object* b) {
@@ -93,9 +81,8 @@ void RENDER::Render(World* world){
     }
 
     if (RENDER::Follow) {
-        Camera.X = RENDER::Follow->Position->X;
-        Camera.Y = RENDER::Follow->Position->Y;
-        Camera.Z = RENDER::Follow->Position->Z;
+        Camera.X = RENDER::Follow->Position->X - RENDER::FOV + RENDER::Follow->Width;
+        Camera.Y = RENDER::Follow->Position->Y - RENDER::FOV / 2 - RENDER::Follow->Height / 2;
     }
 }
 
