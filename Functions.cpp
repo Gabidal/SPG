@@ -7,7 +7,9 @@
 
 constexpr int AIR_FREQUENCY = 20;
 constexpr int INTEGRATION_FREQUENCY = AIR_FREQUENCY / 2;
-constexpr int RIVER_WIDTH = 1;
+constexpr int RIVER_WIDTH = 2;
+constexpr int RIVER_SWIGLINES = 10;
+constexpr int MAX_RIVER_MID_POINTS = 4;
 
 unsigned char Rock_Generator(Pattern* p, Node* Integration_Handle) {
 	if (Integration_Handle && rand() % INTEGRATION_FREQUENCY <= 2) {
@@ -86,7 +88,7 @@ unsigned char Rikka_Generator(Pattern* p, Node* Integration_Handle) {
 
 unsigned char River_Generator(Pattern* p, Node* Integration_Handle) {
 	//First calculate the occurance of the river spawnability
-	if (/*rand() % AIR_FREQUENCY != 1 ||*/ Integration_Handle)
+	if (rand() % AIR_FREQUENCY != 1 || Integration_Handle)
 		return 0;
 
 	//Ok so we have made our mind to make a river then?
@@ -119,14 +121,36 @@ unsigned char River_Generator(Pattern* p, Node* Integration_Handle) {
 
 	vector<Node> Nodes = vector<Node>(&p->Nodes[0], &p->Nodes[CHUNK_SIZE * CHUNK_SIZE]);
 
-	TerGen_Node_Coordinates A = { Highest_Point.first.X, Highest_Point.first.Y };
-	TerGen_Node_Coordinates B = { Lowest_Point.first.X, Lowest_Point.first.Y };
+	vector<TerGen_Node_Coordinates> Points;
+	Points.push_back({ Highest_Point.first.X, Highest_Point.first.Y });
 
-	//Now that we have the most highest point and the lowest point awaiable to us, we can start to generate the river.
-	vector<pair<TerGen_Node_Coordinates, pair<float, float>>> Result = UTILS::Path_Find(Nodes, A, B, 0);
+	int Last_Point = CHAOS_UTILS::Rand(1, MAX_RIVER_MID_POINTS);
+
+	for (int Point = 0; Point < Last_Point; Point++) {
+		float Min_X = max(Points.back().X - RIVER_SWIGLINES, 0);
+		float Min_Z = max(Points.back().Z - RIVER_SWIGLINES, 0);
+
+		float Max_X = min(Points.back().X + RIVER_SWIGLINES, CHUNK_SIZE);
+		float Max_Z = min(Points.back().Z + RIVER_SWIGLINES, CHUNK_SIZE);
+
+		//the more the index is the more closer it should be to the last point.
+		int X = max((int)CHAOS_UTILS::Rand(Min_X, Max_X) - (Lowest_Point.first.X - (Last_Point - Point)), 0);
+		int Z = max((int)CHAOS_UTILS::Rand(Min_Z, Max_Z) - (Lowest_Point.first.Z - (Last_Point - Point)), 0);
+
+
+		TerGen_Node_Coordinates Next_Point = { X, Z };
+
+		Points.push_back(Next_Point);
+	}
+
+	vector<pair<TerGen_Node_Coordinates, pair<float, float>>> Paths;
+
+	for (int Point = 1; Point < Points.size(); Point++) {
+		Append(Paths, UTILS::Path_Find(Nodes, Points[(size_t)Point - 1], Points[Point], 0));
+	}
 
 	//Now that we have all points the path goes through we can start to populate them.
-	for (auto Point : Result) {
+	for (auto& Point : Paths) {
 
 		int Start_X = max(Point.first.X - RIVER_WIDTH, 0);
 		int Start_Z = max(Point.first.Z - RIVER_WIDTH, 0);
@@ -141,6 +165,13 @@ unsigned char River_Generator(Pattern* p, Node* Integration_Handle) {
 
 			}
 		}
+	}
+}
+
+template<typename T>
+void Append(vector<T>& a, vector<T> b) {
+	for (auto i : b) {
+		a.push_back(i);
 	}
 }
 
