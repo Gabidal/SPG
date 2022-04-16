@@ -16,6 +16,8 @@ extern unsigned char River_Generator(Pattern* p, Node* node);
 
 extern inline Node* At(Node* list, int x, int z);
 
+//extern void Water_Flow(Pattern* p, int X, int Z);
+
 template<typename T>
 extern void Append(std::vector<T>& a, std::vector<T> b);
 

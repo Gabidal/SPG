@@ -23,7 +23,7 @@ void Generate_Terrain(World* world) {
 		{Rock_Generator, 0.01},
 		{Tree_Generator, 0.3},
 		{River_Generator, 1},
-	}, 0.001, 1, 4, 0.3, CHAOS_UTILS::Rand(-100, 100));
+	}, 0.000000001, 1, 4, 0.3, CHAOS_UTILS::Rand(-100, 100));
 
 	if (Nodes.size() == 0) {
 		throw::exception("TerGen returned list size of 0!?");
