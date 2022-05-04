@@ -8,8 +8,8 @@
 constexpr int AIR_FREQUENCY = 20;
 constexpr int INTEGRATION_FREQUENCY = AIR_FREQUENCY / 2;
 constexpr int RIVER_WIDTH = 1;
-constexpr int RIVER_SWIGLINES = 10;
-constexpr int MAX_RIVER_MID_POINTS = 10;
+constexpr int RIVER_SWIGLINES = 1;
+constexpr int MAX_RIVER_MID_POINTS = 1;
 
 unsigned char Rock_Generator(Pattern* p, Node* Integration_Handle) {
 	if (Integration_Handle && rand() % INTEGRATION_FREQUENCY <= 2) {
@@ -124,9 +124,9 @@ unsigned char River_Generator(Pattern* p, Node* Integration_Handle) {
 	vector<TerGen_Node_Coordinates> Points;
 	Points.push_back({ Highest_Point.first.X, Highest_Point.first.Y });
 
-	int Last_Point = CHAOS_UTILS::Rand(1, MAX_RIVER_MID_POINTS);
+	int Point_Count = CHAOS_UTILS::Rand(1, MAX_RIVER_MID_POINTS);
 
-	for (int Point = 0; Point < Last_Point; Point++) {
+	for (int Point = 0; Point < Point_Count; Point++) {
 		float Min_X = max(Points.back().X - RIVER_SWIGLINES, 0);
 		float Min_Z = max(Points.back().Z - RIVER_SWIGLINES, 0);
 
@@ -134,9 +134,17 @@ unsigned char River_Generator(Pattern* p, Node* Integration_Handle) {
 		float Max_Z = min(Points.back().Z + RIVER_SWIGLINES, CHUNK_SIZE);
 
 		//the more the index is the more closer it should be to the last point.
-		int X = max((int)CHAOS_UTILS::Rand(Min_X, Max_X) - (Lowest_Point.first.X - (Last_Point - Point)), 0);
-		int Z = max((int)CHAOS_UTILS::Rand(Min_Z, Max_Z) - (Lowest_Point.first.Z - (Last_Point - Point)), 0);
+		int X = (int)CHAOS_UTILS::Rand(Min_X, Max_X);
+		int Z = (int)CHAOS_UTILS::Rand(Min_Z, Max_Z);
 
+		float Distance_X = Lowest_Point.first.X - X;
+		float Distance_Z = Lowest_Point.first.Y - Z;
+
+		float Normalized_Distance_X = Distance_X / Point_Count;
+		float Normalized_Distance_Z = Distance_Z / Point_Count;
+
+		X += Normalized_Distance_X;
+		Z += Normalized_Distance_Z;
 
 		TerGen_Node_Coordinates Next_Point = { X, Z };
 
