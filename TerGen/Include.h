@@ -68,10 +68,13 @@ extern std::vector<Node*> TerGen(
     float Amplitude,
     float Lacuranity,
     float Persictent,
-    float Seed
+    float Seed,
+    float FBM_Octaves,
+    float WARP_Octaves
 );
 
 class TerGen_Chunk;
+class Node;
 
 class TerGen_Chunk_Coordinates {
 public:
@@ -110,11 +113,58 @@ namespace UTILS
     extern unsigned long Rand();
 
     //NOTE!: this Path_Find algorithm is only made for non decimal A & B coordinates.
-    //for decimal coordinate path finding, try Chaos::Path_Find(A, B);
+    //for docimal coorniate path finding, try Chaos::Path_Find(A, B);
     extern vector<pair<TerGen_Node_Coordinates, pair<float, float>>> Path_Find(vector<Node>& nodes, TerGen_Node_Coordinates A, TerGen_Node_Coordinates B, float budget, int Width = 16);
 
     extern unsigned char Get_Color(FUNCTION func);
     extern FUNCTION Get_Function(unsigned char color);
+
+    extern int Sign(float x);
+
+    extern int Clamp(int x, pair<int, int> MinMax);
+
+    class Vector2 {
+    public:
+        float X = 0;
+        float Z = 0;
+
+        Vector2(float x, float z) {
+            X = x;
+            Z = z;
+        }
+
+        Vector2 operator+(Vector2 other) {
+            Vector2 Result = *this;
+
+            Result.X += other.X;
+            Result.Z += other.Z;
+
+            return Result;
+        }
+
+        Vector2 operator*(float num) {
+            Vector2 Result = *this;
+
+            Result.X *= num;
+            Result.Z *= num;
+
+            return Result;
+        }
+
+
+        Vector2 operator+(float num) {
+            Vector2 Result = *this;
+
+            Result.X += num;
+            Result.Z += num;
+
+            return Result;
+        }
+    };
+
+    //Idea by Inigo Quilez
+    //f(p) = fbm( p + fbm( p + fbm( p )) )
+    extern float Warp(Vector2 Position);
 }
 
 #endif

@@ -22,8 +22,12 @@ void Generate_Terrain(World* world) {
 		{Rikka_Generator, 1},
 		{Rock_Generator, 0.01},
 		{Tree_Generator, 0.3},
-		{River_Generator, 1},
-	}, 0.01, 1, 4, 0.3, CHAOS_UTILS::Rand(-100, 100));
+		//{River_Generator, 1},
+	}, 0.001, 1, 10, 0.3, CHAOS_UTILS::Rand(-100, 100), 4, 0);
+
+	//master zoom, 1, second master zoom, master roughnes, seed, master control amount, little effecter zoom
+	//0.001, 1, 10, 0.3, CHAOS_UTILS::Rand(-100, 100), 4, 2 <- good
+	//0.01, 1, 1.1, 2, CHAOS_UTILS::Rand(-100, 100), 25, 0 <- buble
 
 	if (Nodes.size() == 0) {
 		throw::exception("TerGen returned list size of 0!?");
