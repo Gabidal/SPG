@@ -40,21 +40,21 @@ int main(int argc, char** argv)
 
     Init_Chaos();
 
-    Entity* last = nullptr;
+    //Entity* last = nullptr;
 
-    for (int i = 0; i < CHUNK_SIZE; i++) {
-        FloatVector location = {
-            (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
-            (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
-        };
+    //for (int i = 0; i < CHUNK_SIZE; i++) {
+    //    FloatVector location = {
+    //        (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
+    //        (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
+    //    };
 		
-        Entity_Type type = (Entity_Type)(rand() % (int)Entity_Type::COUNT);
-        Entity* ent = new Entity(location, type);
+    //    Entity_Type type = (Entity_Type)(rand() % (int)Entity_Type::COUNT);
+    //    Entity* ent = new Entity(location, type);
 
-        world->Add_Object(ent);
+    //    world->Add_Object(ent);
 
-        last = ent;
-    }
+    //    last = ent;
+    //}
 
     //RENDER::Follow = last;
 

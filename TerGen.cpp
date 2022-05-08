@@ -21,7 +21,7 @@ void Generate_Terrain(World* world) {
 	vector<Node*> Nodes = TerGen(Arguments, {
 		{Rikka_Generator, 1},
 		{Rock_Generator, 1},
-		{Tree_Generator, 1},
+		{Tree_Generator, 0.1},
 		{River_Generator, 1},
 	}, 0.001, 1, 10, 0.3, CHAOS_UTILS::Rand(-100, 100), 4, 0);
 

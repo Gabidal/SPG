@@ -8,6 +8,7 @@
 class Node {
 public:
     float Y;
+    float Delta;
     unsigned char Color;
     short Moisture;
     short Tempature;
@@ -116,7 +117,7 @@ namespace UTILS
     //for docimal coorniate path finding, try Chaos::Path_Find(A, B);
     extern vector<pair<TerGen_Node_Coordinates, pair<float, float>>> Path_Find(vector<Node>& nodes, TerGen_Node_Coordinates A, TerGen_Node_Coordinates B, float budget, int Width = 16);
     extern vector<pair<TerGen_Node_Coordinates, pair<float, float>>> Path_Find(vector<Node*>& nodes, TerGen_Node_Coordinates A, TerGen_Node_Coordinates B, float budget, int Width = 16);
-
+    
     extern unsigned char Get_Color(FUNCTION func);
     extern FUNCTION Get_Function(unsigned char color);
 

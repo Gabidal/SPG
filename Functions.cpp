@@ -101,34 +101,17 @@ unsigned char River_Generator(Pattern* p, Node* Integration_Handle) {
 
 			float Heigth = UTILS::Warp_Noise({ Real_X, Real_Z });
 
-			//if (Heigth < 1) {
+			if (Heigth < -0.3) {
 				int index = CHUNK_SIZE * x + z;
 
 				Node* n = &p->Nodes[index];
 				
 				n->Color = p->Color;
 
-			//}
+			}
 		
 		}
 	}
-
-	//for (int x = 0; x < CHUNK_SIZE; x++) {
-	//	for (int z = 0; z < CHUNK_SIZE; z++) {
-	//		int index = CHUNK_SIZE * x + z;
-
-	//		Node* n = &p->Nodes[index];
-	//		cout << n->Color + 48 << " ";
-
-
-	//	}
-	//	cout << endl;
-	//}
-
-	Node* n = &p->Nodes[0];
-	//cout << n << endl;
-	float a = n->Color;
-
 }
 
 //void Water_Flow(Pattern* p, int X, int Z) {
