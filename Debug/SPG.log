@@ -1,0 +1,154 @@
+﻿  Chaos.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Chaos.cpp(49,9): warning C4305: 'argument': truncation from 'double' to 'float'
+  Chunk.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Chunk.cpp(13,23): warning C4018: '<': signed/unsigned mismatch
+  Entity.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\File_Loader.h(18,18): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
+C:\Users\Quanf\source\repos\SPG\SDL\SDL_render.h(147): message : see declaration of 'SDL_Texture'
+C:\Users\Quanf\source\repos\SPG\File_Loader.h(19,18): warning C4099: 'SDL_Surface': type name first seen using 'struct' now seen using 'class'
+C:\Users\Quanf\source\repos\SPG\SDL\SDL_surface.h(70): message : see declaration of 'SDL_Surface'
+C:\Users\Quanf\source\repos\SPG\Entity.cpp(22,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Entity.cpp(30,91): warning C4305: 'argument': truncation from 'const double' to 'float'
+C:\Users\Quanf\source\repos\SPG\Entity.cpp(65,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Entity.cpp(66,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  File_Loader.cpp
+C:\Users\Quanf\source\repos\SPG\SDL\SDL_surface.h(71,1): warning C4099: 'SDL_Surface': type name first seen using 'class' now seen using 'struct'
+C:\Users\Quanf\source\repos\SPG\SDL\SDL_surface.h(70): message : see declaration of 'SDL_Surface'
+C:\Users\Quanf\source\repos\SPG\SDL\SDL_render.h(147,19): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
+C:\Users\Quanf\source\repos\SPG\File_Loader.h(18): message : see declaration of 'SDL_Texture'
+C:\Users\Quanf\source\repos\SPG\SDL\SDL_render.h(148,39): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
+C:\Users\Quanf\source\repos\SPG\SDL\SDL_render.h(147): message : see declaration of 'SDL_Texture'
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Functions.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Functions.cpp(99,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Functions.cpp(100,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Key_Listener.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\main.cpp(37,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\main.cpp(29,15): warning C4101: 'event': unreferenced local variable
+  Object.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Render.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Render.cpp(54,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Render.cpp(65,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Render.cpp(76,23): warning C4018: '<': signed/unsigned mismatch
+  TerGen.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\TerGen.cpp(26,58): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Quanf\source\repos\SPG\TerGen.cpp(41,66): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\TerGen.cpp(41,53): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\TerGen.cpp(42,65): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\TerGen.cpp(42,52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\TerGen.cpp(57,6): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\TerGen.cpp(57,3): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\TerGen.cpp(84,6): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\TerGen.cpp(84,3): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Tile.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\File_Loader.h(18,18): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
+C:\Users\Quanf\source\repos\SPG\SDL\SDL_render.h(147): message : see declaration of 'SDL_Texture'
+C:\Users\Quanf\source\repos\SPG\File_Loader.h(19,18): warning C4099: 'SDL_Surface': type name first seen using 'struct' now seen using 'class'
+C:\Users\Quanf\source\repos\SPG\SDL\SDL_surface.h(70): message : see declaration of 'SDL_Surface'
+C:\Users\Quanf\source\repos\SPG\Tile.cpp(70,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  World.cpp
+C:\Users\Quanf\source\repos\SPG\Vector.h(29,21): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(61,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(95,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\Vector.h(131,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Quanf\source\repos\SPG\Vector.h(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\World.cpp(16,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\World.cpp(16,31): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Quanf\source\repos\SPG\World.cpp(61,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Quanf\source\repos\SPG\World.cpp(62,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+C:\Users\Quanf\source\repos\SPG\Functions.cpp(132): warning C4715: 'River_Generator': not all control paths return a value
+Chaos.obj : error LNK2019: unresolved external symbol "void __cdecl Chaos_Init(class std::map<int,class Vector * (__cdecl*)(class Chaos_Handle *,class Chaos_Handle *),struct std::less<int>,class std::allocator<struct std::pair<int const ,class Vector * (__cdecl*)(class Chaos_Handle *,class Chaos_Handle *)> > >,float)" (?Chaos_Init@@YAXV?$map@HP6APAVVector@@PAVChaos_Handle@@0@ZU?$less@H@std@@V?$allocator@U?$pair@$$CBHP6APAVVector@@PAVChaos_Handle@@0@Z@std@@@4@@std@@M@Z) referenced in function "void __cdecl Init_Chaos(void)" (?Init_Chaos@@YAXXZ)
+Entity.obj : error LNK2019: unresolved external symbol _SDL_RenderCopy referenced in function "public: virtual void __thiscall Entity::Render(void)" (?Render@Entity@@UAEXXZ)
+main.obj : error LNK2001: unresolved external symbol _SDL_RenderCopy
+Tile.obj : error LNK2001: unresolved external symbol _SDL_RenderCopy
+Entity.obj : error LNK2019: unresolved external symbol "class Chaos_Handle * __cdecl Get_New_Handle(class Vector *,float)" (?Get_New_Handle@@YAPAVChaos_Handle@@PAVVector@@M@Z) referenced in function "public: __thiscall Entity::Entity(class FloatVector,enum Entity_Type)" (??0Entity@@QAE@VFloatVector@@W4Entity_Type@@@Z)
+File_Loader.obj : error LNK2019: unresolved external symbol _SDL_CreateTextureFromSurface referenced in function "class File * __cdecl File_Loader::Load_File(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?Load_File@File_Loader@@YAPAVFile@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+File_Loader.obj : error LNK2019: unresolved external symbol _IMG_Load referenced in function "class File * __cdecl File_Loader::Load_File(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?Load_File@File_Loader@@YAPAVFile@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Functions.obj : error LNK2019: unresolved external symbol "float __cdecl UTILS::Warp_Noise(class UTILS::Vector2)" (?Warp_Noise@UTILS@@YAMVVector2@1@@Z) referenced in function "unsigned char __cdecl River_Generator(class Pattern *,class Node *)" (?River_Generator@@YAEPAVPattern@@PAVNode@@@Z)
+Key_Listener.obj : error LNK2019: unresolved external symbol _SDL_GetKeyboardState referenced in function "void __cdecl KEY_LISTENER::Listen_For_Key_Presses(float)" (?Listen_For_Key_Presses@KEY_LISTENER@@YAXM@Z)
+Key_Listener.obj : error LNK2019: unresolved external symbol _SDL_PollEvent referenced in function "void __cdecl KEY_LISTENER::Listen_For_Mouse(float)" (?Listen_For_Mouse@KEY_LISTENER@@YAXM@Z)
+main.obj : error LNK2019: unresolved external symbol _SDL_DestroyWindow referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _SDL_PumpEvents referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _SDL_CreateTexture referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _SDL_SetRenderTarget referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _SDL_SetRenderDrawColor referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _SDL_RenderClear referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _SDL_RenderPresent referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _SDL_DestroyRenderer referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _SDL_Quit referenced in function _main
+Render.obj : error LNK2019: unresolved external symbol _SDL_CreateWindow referenced in function "void __cdecl RENDER::Start_Window(int,int)" (?Start_Window@RENDER@@YAXHH@Z)
+Render.obj : error LNK2019: unresolved external symbol _SDL_CreateRenderer referenced in function "void __cdecl RENDER::Start_Window(int,int)" (?Start_Window@RENDER@@YAXHH@Z)
+Render.obj : error LNK2019: unresolved external symbol _SDL_Init referenced in function "void __cdecl RENDER::Start_Window(int,int)" (?Start_Window@RENDER@@YAXHH@Z)
+Render.obj : error LNK2019: unresolved external symbol "void __cdecl Chaos_Update(void)" (?Chaos_Update@@YAXXZ) referenced in function "void __cdecl RENDER::Update(class World *,unsigned __int64)" (?Update@RENDER@@YAXPAVWorld@@_K@Z)
+TerGen.obj : error LNK2019: unresolved external symbol "class std::vector<class Node *,class std::allocator<class Node *> > __cdecl TerGen(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::vector<class Packet,class std::allocator<class Packet> >,float,float,float,float,float,float,float)" (?TerGen@@YA?AV?$vector@PAVNode@@V?$allocator@PAVNode@@@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@V?$vector@VPacket@@V?$allocator@VPacket@@@std@@@2@MMMMMMM@Z) referenced in function "void __cdecl Generate_Terrain(class World *)" (?Generate_Terrain@@YAXPAVWorld@@@Z)
+TerGen.obj : error LNK2019: unresolved external symbol "void __cdecl UTILS::For_All_Nodes(class std::vector<class Node *,class std::allocator<class Node *> >,class std::function<void __cdecl(class Node *,double,double,double,double)>)" (?For_All_Nodes@UTILS@@YAXV?$vector@PAVNode@@V?$allocator@PAVNode@@@std@@@std@@V?$function@$$A6AXPAVNode@@NNNN@Z@3@@Z) referenced in function "void __cdecl Generate_Terrain(class World *)" (?Generate_Terrain@@YAXPAVWorld@@@Z)
+Tile.obj : error LNK2019: unresolved external symbol "unsigned char (__cdecl*__cdecl UTILS::Get_Function(unsigned char))(class Pattern *,class Node *)" (?Get_Function@UTILS@@YAP6AEPAVPattern@@PAVNode@@@ZE@Z) referenced in function "enum TILE_TYPES __cdecl Get_Tile_Type(unsigned char)" (?Get_Tile_Type@@YA?AW4TILE_TYPES@@E@Z)
+C:\Users\Quanf\source\repos\SPG\Debug\SPG.exe : fatal error LNK1120: 24 unresolved externals

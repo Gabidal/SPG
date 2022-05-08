@@ -19,6 +19,8 @@
 
 extern FloatVector RENDER::Camera;
 
+World* world = new World();
+
 using namespace std;
 
 int main(int argc, char** argv)
@@ -28,9 +30,6 @@ int main(int argc, char** argv)
 
     //Start the window
     RENDER::Start_Window(1920, 1080);
-
-    //Create the world
-    World* world = new World();
 
     RENDER::Camera.X = 0;
     RENDER::Camera.Y = 0;

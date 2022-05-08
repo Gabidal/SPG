@@ -59,9 +59,6 @@ void RENDER::Render(World* world){
 
     //Sort the objects by their Z coordinate
     sort(All_Objects.begin(), All_Objects.end(), [](Object* a, Object* b) {
-        if (a == nullptr || b == nullptr) {
-            int a = 0;
-        }
         if (a->Position->Z != b->Position->Z)
             return a->Position->Z < b->Position->Z;
 

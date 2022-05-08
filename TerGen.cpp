@@ -20,9 +20,9 @@ void Generate_Terrain(World* world) {
 
 	vector<Node*> Nodes = TerGen(Arguments, {
 		{Rikka_Generator, 1},
-		{Rock_Generator, 0.01},
-		{Tree_Generator, 0.3},
-		//{River_Generator, 1},
+		{Rock_Generator, 1},
+		{Tree_Generator, 1},
+		{River_Generator, 1},
 	}, 0.001, 1, 10, 0.3, CHAOS_UTILS::Rand(-100, 100), 4, 0);
 
 	//master zoom, 1, second master zoom, master roughnes, seed, master control amount, little effecter zoom
@@ -32,6 +32,8 @@ void Generate_Terrain(World* world) {
 	if (Nodes.size() == 0) {
 		throw::exception("TerGen returned list size of 0!?");
 	}
+
+	world->Raw_Nodes = Nodes;
 
 	UTILS::For_All_Nodes(Nodes, [world](Node* node, double x, double y, double Chunk_X, double Chunk_Y) {
 		//The Y in TerGen is same as our Z axis

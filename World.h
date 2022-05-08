@@ -1,6 +1,7 @@
 #ifndef _WORLD_H_
 #define _WORLD_H_
 
+#include <vector>
 #include <map>
 #include <string>
 
@@ -35,6 +36,7 @@ public:
 class World {
 public:
 	map<string, Chunk*> Chunks;
+	vector<class Node*> Raw_Nodes;
 
 	Chunk* Get_Chunk(Chunk_Coordinates cc);
 
