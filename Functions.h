@@ -14,6 +14,8 @@ extern unsigned char Rikka_Generator(Pattern* p, Node* node);
 
 extern unsigned char River_Generator(Pattern* p, Node* node);
 
+extern unsigned char Cactus_Generator(Pattern* p, Node* node);
+
 extern inline Node* At(Node* list, int x, int z);
 
 //extern void Water_Flow(Pattern* p, int X, int Z);

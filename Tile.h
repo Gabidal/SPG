@@ -9,12 +9,23 @@ using namespace std;
 
 namespace TILE_IMAGES{
     const string AIR = "Air.png";
-    const string COBBLESTONE = "Cobblestone.png";
     const string OCEAN = "Ocean.png";
+    const string SAND = "Sand.png";
+    const string SAND2 = "Sand2.png";
+    const string SAND_GRASSY = "Sand_Grassy.png";
+    const string SWAMP = "Swamp.png";
     const string GRASS = "Grass.png";
-    const string SWAMP = "SwampGrass.png";
-    const string DARK_GRASS = "GrassBG.png";
+    const string GRASS2 = "Grass2.png";
+    const string TUNDRA = "Tundra.png";
+    const string TUNDRA2 = "Tundra2.png";
+    const string TUNDRA3 = "Tundra3.png";
+    const string GRAVEL = "Gravel.png";
+    const string GRAVEL2 = "Gravel2.png";
+    const string COBBLESTONE = "Cobblestone.png";
     const string SMOOTH_STONE = "Smooth Stone.png";
+    const string SNOW = "Snow.png";
+
+	
     const string ROCK = "Rock.png";
     const string BIRCH = "Birch.png";
     const string OAK = "Oak.png";
@@ -24,7 +35,6 @@ namespace TILE_IMAGES{
 
 enum class TILE_TYPES{
     AIR,
-    WATER,
     BG,
     ROCK,
     TREE,
@@ -35,11 +45,24 @@ enum class TILE_TYPES{
 };
 
 enum class BG_TYPES {
+	WATER,
+    SAND,
+    SAND2,
+    SAND_GRASSY,
     SWAMP,
-    DARK_GRASS,
     GRASS,
+    GRASS2,
+    TUNDRA,
+    TUNDRA2,
+    TUNDRA3,
+    GRAVEL,
+    GRAVEL2,
     COBBLESTONE,
+    COBBLESTONE2,
+    COBBLESTONE3,
     SMOOTH_STONE,
+    SNOW,
+    SNOW2,
     COUNT,
 };
 

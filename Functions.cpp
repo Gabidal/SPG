@@ -54,7 +54,7 @@ unsigned char Tree_Generator(Pattern* p, Node* Integration_Handle) {
 		if (rand() % AIR_FREQUENCY == 1) {
 			BG_TYPES Elevation = Normalize_Y(p->Nodes[i].Y);
 
-			if (Elevation < BG_TYPES::COBBLESTONE) {
+			if (Elevation >= BG_TYPES::SWAMP && Elevation <= BG_TYPES::TUNDRA) {
 				p->Nodes[i].Color = p->Color;
 			}
 		}
@@ -92,6 +92,8 @@ unsigned char River_Generator(Pattern* p, Node* Integration_Handle) {
 	//First calculate the occurance of the river spawnability
 	if (Integration_Handle)	//This function will not answer to integration.
 		return 0;
+
+	return 0;
 	
 	for (int x = 0; x < CHUNK_SIZE; x++) {
 		for (int z = 0; z < CHUNK_SIZE; z++) {
@@ -112,6 +114,30 @@ unsigned char River_Generator(Pattern* p, Node* Integration_Handle) {
 		
 		}
 	}
+}
+
+unsigned char Cactus_Generator(Pattern* p, Node* Integration_Handle) {
+	if (Integration_Handle && rand() % INTEGRATION_FREQUENCY <= 2) {
+		BG_TYPES Elevation = Normalize_Y(Integration_Handle->Y);
+
+		if (Elevation == BG_TYPES::SAND2) {
+			return p->Color;
+		}
+	}
+	if (Integration_Handle)
+		return 0;
+
+	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
+		if (rand() % AIR_FREQUENCY == 1) {
+			BG_TYPES Elevation = Normalize_Y(p->Nodes[i].Y);
+
+			if (Elevation == BG_TYPES::SAND2) {
+				p->Nodes[i].Color = p->Color;
+			}
+		}
+	}
+
+	return 0;
 }
 
 //void Water_Flow(Pattern* p, int X, int Z) {

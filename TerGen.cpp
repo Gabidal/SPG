@@ -22,7 +22,8 @@ void Generate_Terrain(World* world) {
 		{Rikka_Generator, 1},
 		{Rock_Generator, 1},
 		{Tree_Generator, 0.1},
-		{River_Generator, 1},
+		{Cactus_Generator, 1},
+		//{River_Generator, 1},
 	}, 0.001, 1, 10, 0.3, CHAOS_UTILS::Rand(-100, 100), 4, 0);
 
 	//master zoom, 1, second master zoom, master roughnes, seed, master control amount, little effecter zoom
@@ -89,20 +90,50 @@ Object* Get_Right_Object(Node* node, int x, int y) {
 }
 
 string Get_BG_Tile_Name(BG_TYPES bg) {
-	if (bg == BG_TYPES::GRASS) {
+	if (bg == BG_TYPES::WATER) {
+		return TILE_IMAGES::OCEAN;
+	}
+	else if (bg == BG_TYPES::SAND) {
+		return TILE_IMAGES::SAND;
+	}
+	else if (bg == BG_TYPES::SAND2) {
+		return TILE_IMAGES::SAND2;
+	}
+	else if (bg == BG_TYPES::SAND_GRASSY) {
+		return TILE_IMAGES::SAND_GRASSY;
+	}
+	else if (bg == BG_TYPES::SWAMP) {
+		return TILE_IMAGES::SWAMP;
+	}
+	else if (bg == BG_TYPES::GRASS) {
 		return TILE_IMAGES::GRASS;
 	}
-	else if(bg == BG_TYPES::COBBLESTONE) {
+	else if (bg == BG_TYPES::GRASS2) {
+		return TILE_IMAGES::GRASS2;
+	}
+	else if (bg == BG_TYPES::TUNDRA) {
+		return TILE_IMAGES::TUNDRA;
+	}
+	else if (bg == BG_TYPES::TUNDRA2) {
+		return TILE_IMAGES::TUNDRA2;
+	}
+	else if (bg == BG_TYPES::TUNDRA3) {
+		return TILE_IMAGES::TUNDRA3;
+	}
+	else if (bg == BG_TYPES::GRAVEL) {
+		return TILE_IMAGES::GRAVEL;
+	}
+	else if (bg == BG_TYPES::GRAVEL2) {
+		return TILE_IMAGES::GRAVEL2;
+	}
+	else if(bg == BG_TYPES::COBBLESTONE || bg == BG_TYPES::COBBLESTONE2 || bg == BG_TYPES::COBBLESTONE3) {
 		return TILE_IMAGES::COBBLESTONE;
 	}
 	else if (bg == BG_TYPES::SMOOTH_STONE) {
 		return TILE_IMAGES::SMOOTH_STONE;
 	}
-	else if (bg == BG_TYPES::SWAMP) {
-		return TILE_IMAGES::SWAMP;
-	}
-	else if (bg == BG_TYPES::DARK_GRASS) {
-		return TILE_IMAGES::DARK_GRASS;
+	else if (bg == BG_TYPES::SNOW || bg == BG_TYPES::SNOW2) {
+		return TILE_IMAGES::SNOW;
 	}
 	else {
 		return "";
