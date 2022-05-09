@@ -118,6 +118,8 @@ namespace UTILS
     extern vector<pair<TerGen_Node_Coordinates, pair<float, float>>> Path_Find(vector<Node>& nodes, TerGen_Node_Coordinates A, TerGen_Node_Coordinates B, float budget, int Width = 16);
     extern vector<pair<TerGen_Node_Coordinates, pair<float, float>>> Path_Find(vector<Node*>& nodes, TerGen_Node_Coordinates A, TerGen_Node_Coordinates B, float budget, int Width = 16);
     
+    extern vector<TerGen_Node_Coordinates> Get_Surrounding_Coordinates(TerGen_Node_Coordinates coordinates, int radius, pair<int, int> MinMax);
+
     extern unsigned char Get_Color(FUNCTION func);
     extern FUNCTION Get_Function(unsigned char color);
 

@@ -8,7 +8,7 @@
 void KEY_LISTENER::Listen_For_Key_Presses(float delta) {
     auto Keyboard = SDL_GetKeyboardState(NULL);
 
-    delta *= 100;
+    delta *= 10;
 
     FloatVector Direction(0, 0);
 

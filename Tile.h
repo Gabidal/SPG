@@ -31,6 +31,7 @@ namespace TILE_IMAGES{
     const string OAK = "Oak.png";
     const string RIKKA = "Rikka.png";
     const string CACTUS = "Cactus.png";
+    const string WATER_ROCK = "Pointy_Rock.png";
 }
 
 enum class TILE_TYPES{
@@ -41,6 +42,7 @@ enum class TILE_TYPES{
     RIKKA,
     CACTUS,
     CRAB,
+	WATER_ROCK,
     COUNT
 };
 

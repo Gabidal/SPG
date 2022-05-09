@@ -25,12 +25,14 @@ unsigned char Rock_Generator(Pattern* p, Node* Integration_Handle) {
 	if (Integration_Handle)
 		return 0;
 	
-	for (int i = 0; i < CHUNK_SIZE * CHUNK_SIZE; i++) {
-		if (rand() % AIR_FREQUENCY == 1) {
-			BG_TYPES Elevation = Normalize_Y(p->Nodes[i].Y);
+	for (int x = 0; x < CHUNK_SIZE; x++) {
+		for (int z = 0; z < CHUNK_SIZE; z++) {
+			if (rand() % AIR_FREQUENCY == 1) {
+				BG_TYPES Elevation = Normalize_Y(p->Nodes[CHUNK_SIZE * x + z].Y);
 
-			if (Elevation == BG_TYPES::COBBLESTONE) {
-				p->Nodes[i].Color = p->Color;
+				if (Elevation == BG_TYPES::COBBLESTONE) {
+					p->Nodes[CHUNK_SIZE * x + z].Color = p->Color;
+				}
 			}
 		}
 	}
@@ -133,6 +135,43 @@ unsigned char Cactus_Generator(Pattern* p, Node* Integration_Handle) {
 
 			if (Elevation == BG_TYPES::SAND2) {
 				p->Nodes[i].Color = p->Color;
+			}
+		}
+	}
+
+	return 0;
+}
+
+unsigned char Water_Rock_Generator(Pattern* p, Node* Integration_Handle) {
+	if (Integration_Handle)
+		return 0;
+
+	for (int x = 0; x < CHUNK_SIZE; x++) {
+		for (int z = 0; z < CHUNK_SIZE; z++) {
+			if (rand() % AIR_FREQUENCY == 1) {
+				BG_TYPES Elevation = Normalize_Y(p->Nodes[CHUNK_SIZE * x + z].Y);
+
+				vector<TerGen_Node_Coordinates> Surrounding_Nodes = UTILS::Get_Surrounding_Coordinates({ x, z }, 1, { 0, CHUNK_SIZE });
+
+				int Water_Surrounds = 0;
+				int Sand_Surrounds = 0;
+
+				for (TerGen_Node_Coordinates Coordinate : Surrounding_Nodes) {
+
+					BG_TYPES Normalized_Elevation = Normalize_Y(p->Nodes[CHUNK_SIZE * Coordinate.X + Coordinate.Z].Y);
+
+					if (Normalized_Elevation == BG_TYPES::WATER) {
+						Water_Surrounds++;
+					}
+					else if (Normalized_Elevation == BG_TYPES::SAND) {
+						Sand_Surrounds++;
+					}
+
+				}
+
+				if (Sand_Surrounds == 5 && Water_Surrounds == 3) {
+					p->Nodes[CHUNK_SIZE * x + z].Color = p->Color;
+				}
 			}
 		}
 	}

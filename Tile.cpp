@@ -40,8 +40,8 @@ string Get_Tile_Image(TILE_TYPES name){
             return TILE_IMAGES::CACTUS;
         case TILE_TYPES::RIKKA:
             return TILE_IMAGES::RIKKA;
-        /*case TILE_TYPES::WATER:
-            return TILE_IMAGES::OCEAN;*/
+        case TILE_TYPES::WATER_ROCK:
+            return TILE_IMAGES::WATER_ROCK;
         default: {
             
             return "";
@@ -61,6 +61,8 @@ TILE_TYPES Get_Tile_Type(unsigned char color)
         return TILE_TYPES::RIKKA;
     else if (func == Cactus_Generator)
         return TILE_TYPES::CACTUS;
+    else if (func == Water_Rock_Generator)
+        return TILE_TYPES::WATER_ROCK;  
     else {
         return TILE_TYPES::AIR;
     }
