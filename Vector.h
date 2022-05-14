@@ -100,29 +100,34 @@ public:
         return FloatVector(X + v.X, Y + v.Y, Z + v.Z);
     }
 
+    //this function add two vectors together.
+    FloatVector Add(float v) {
+        return FloatVector(X + v, Y + v);
+    }
+
     //This function subtracts two vectors.
     FloatVector Subtract(FloatVector v) {
-        return FloatVector(X - v.X, Y - v.Y, Z - v.Z);
+        return FloatVector(X - v.X, Y - v.Y);
     }
 
     //This function subtracts.
     FloatVector Subtract(float v) {
-        return FloatVector(X - v, Y - v, Z - v);
+        return FloatVector(X - v, Y - v);
     }
 
     //This function multiplies two vectors.
     FloatVector Multiply(FloatVector v) {
-        return FloatVector(X * v.X, Y * v.Y, Z * v.Z);
+        return FloatVector(X * v.X, Y * v.Y);
     }
 
     //This function multiplies.
     FloatVector Multiply(float v) {
-        return FloatVector(X * v, Y * v, Z * v);
+        return FloatVector(X * v, Y * v);
     }
 
     //This function divides two vectors.
     FloatVector Divide(FloatVector v) {
-        return FloatVector(X / v.X, Y / v.Y, Z / v.Z);
+        return FloatVector(X / v.X, Y / v.Y);
     }
 
     //This function multiplies a vector with a list of vectors
@@ -134,13 +139,13 @@ public:
     }
 
     FloatVector Normalize() {
-        float length = sqrt(pow(X, 2) + pow(Y, 2) + pow(Z, 2));
+        float length = sqrt(pow(X, 2) + pow(Y, 2));
 
         if (length < 0.00001) {
             return FloatVector(0, 0, 0);
         }
 
-        return FloatVector(X / length, Y / length, Z / length);
+        return FloatVector(X / length, Y / length);
     }
 
     FloatVector Scale(float scale) {

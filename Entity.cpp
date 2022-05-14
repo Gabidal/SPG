@@ -4,7 +4,11 @@
 #include "Tile.h"
 #include "TerGen/Include.h"
 
+#include "World.h"
+
 vector<Entity_Template> Entities;
+
+extern World* world;
 
 float Rand() {
 	return (float)rand() / RAND_MAX;
@@ -22,12 +26,12 @@ void Dum(Object* This, unsigned long long Delta) {
 		((Entity*)This)->Interval = Rand(100, 10000);
 
 		//This acts like the objective
-		This->Velocity = new FloatVector(Rand(-Distance, Distance), Rand(-Distance, Distance));
+		((Entity*)This)->Objective = FloatVector(Rand(-Distance, Distance), Rand(-Distance, Distance));
 	}
 
-	float Velocity_Speed = sqrt(This->Velocity->X * This->Velocity->X + This->Velocity->Y * This->Velocity->Y);
-
-	*This->Position = This->Position->Add(This->Velocity->Normalize().Multiply(Transfer_Speed));
+	*This->Velocity = This->Velocity->Add(((Entity*)This)->Objective.Normalize());
+	
+	world->Apply_Velocity(This, Delta, Transfer_Speed);
 }
 
 void Entities_Init() {
@@ -55,9 +59,11 @@ Entity::Entity(FloatVector Location, Entity_Type name) : Object(OBJECT_TYPES::EN
 
 	Update = Template->Update;
 
-	Position->Z = (int)BG_TYPES::COUNT;
+	Position->Z = RENDER::Entity_Draw_Priority;
 
-	Handle = Get_New_Handle((Vector*)Position, Rand(Template->Min_Power, Template->Max_Power));
+	Strength = Rand(Template->Min_Power, Template->Max_Power);
+
+	Handle = Get_New_Handle((Vector*)Velocity, Strength);
 	Name = name;
 
 	Image = Template->Image;

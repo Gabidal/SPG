@@ -23,7 +23,7 @@ public:
 	Entity_Type Name;
 	Chaos_Handle* Handle;
 	class File* Image;
-	vector<FloatVector> Path_Cache;
+	FloatVector Objective;
 
 	int Interval = 1;
 

@@ -18,6 +18,8 @@ public:
 	int Width;
 	int Height;
 
+	float Strength = 10;
+
 	Object(OBJECT_TYPES type);
 
 	Object(OBJECT_TYPES type, float x, float y, float z);

@@ -47,6 +47,8 @@ public:
 	void Add_Object(Object* object);
 
 	string Get_Chunk_Key(float x, float y);
+
+	void Apply_Velocity(Object* object, unsigned long long Delta_Time, float Transfer_Speed);
 };
 
 #endif

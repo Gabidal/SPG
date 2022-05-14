@@ -31,6 +31,10 @@ FloatVector RENDER::Camera;
 
 Object* RENDER::Follow;
 
+int RENDER::BG_Draw_Priority = (int)BG_TYPES::COUNT;
+int RENDER::Static_Objects_Draw_Priority = 1 + RENDER::BG_Draw_Priority;
+int RENDER::Entity_Draw_Priority = 1 + RENDER::Static_Objects_Draw_Priority;
+
 void RENDER::Start_Window(int width, int height){
     SDL_Init(SDL_INIT_VIDEO);
 

@@ -84,7 +84,7 @@ Object* Get_Right_Object(Node* node, int x, int y) {
 		Size,
 		Size,
 		x, y,
-		(abs(node->Y)) + (int)BG_TYPES::COUNT
+		(abs(node->Y)) + RENDER::Static_Objects_Draw_Priority
 	);
 
 	return Result;

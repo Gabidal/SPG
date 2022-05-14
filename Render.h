@@ -28,6 +28,10 @@ namespace RENDER{
     extern int Max_FOV;
     extern int Min_FOV;
 
+    extern int Static_Objects_Draw_Priority;
+    extern int Entity_Draw_Priority;
+    extern int BG_Draw_Priority;
+
     extern Object* Follow;
 
     const bool Full_Screen = false;
