@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 	last = new Entity(location, type);
     world->Add_Object(last);*/
 
-    for (int i = 0; i < CHUNK_SIZE * CHUNK_AMOUNT_SQRT; i++) {
+    for (int i = 0; i < CHUNK_SIZE * 2; i++) {
         FloatVector location = {
             (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
             (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),

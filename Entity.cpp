@@ -63,7 +63,7 @@ Entity::Entity(FloatVector Location, Entity_Type name) : Object(OBJECT_TYPES::EN
 
 	Strength = Rand(Template->Min_Power, Template->Max_Power);
 
-	Handle = Get_New_Handle((Vector*)Velocity, Strength);
+	Handle = Get_New_Handle((Vector*)Position, Strength);
 	Name = name;
 
 	Image = Template->Image;
