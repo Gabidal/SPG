@@ -41,13 +41,6 @@ int main(int argc, char** argv)
     Init_Chaos();
 
     Entity* last = nullptr;
-    /*FloatVector location = {
-        (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
-        (float)(rand() % (CHUNK_SIZE * CHUNK_AMOUNT_SQRT)),
-    };
-    Entity_Type type = (Entity_Type)(rand() % (int)Entity_Type::COUNT);
-	last = new Entity(location, type);
-    world->Add_Object(last);*/
 
     for (int i = 0; i < CHUNK_SIZE * 2; i++) {
         FloatVector location = {

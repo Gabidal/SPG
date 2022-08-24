@@ -5,6 +5,9 @@
 #include <string>
 #include <functional>
 
+//constexpr int CHUNK_SIZE = 16;
+constexpr int MAX_HEIGHT = 16 / 2;
+
 class Node {
 public:
     float Y;
@@ -117,7 +120,7 @@ namespace UTILS
     //for docimal coorniate path finding, try Chaos::Path_Find(A, B);
     extern vector<pair<TerGen_Node_Coordinates, pair<float, float>>> Path_Find(vector<Node>& nodes, TerGen_Node_Coordinates A, TerGen_Node_Coordinates B, float budget, int Width = 16);
     extern vector<pair<TerGen_Node_Coordinates, pair<float, float>>> Path_Find(vector<Node*>& nodes, TerGen_Node_Coordinates A, TerGen_Node_Coordinates B, float budget, int Width = 16);
-    
+
     extern vector<TerGen_Node_Coordinates> Get_Surrounding_Coordinates(TerGen_Node_Coordinates coordinates, int radius, pair<int, int> MinMax);
 
     extern unsigned char Get_Color(FUNCTION func);
